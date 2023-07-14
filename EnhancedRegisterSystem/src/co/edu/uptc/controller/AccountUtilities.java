@@ -1,5 +1,8 @@
 package co.edu.uptc.controller;
-
+/**
+ * @author:EdwinMartinez
+ * {@code @version:14/07/2023}
+ */
 public class AccountUtilities{
     public AccountUtilities() {
     }
