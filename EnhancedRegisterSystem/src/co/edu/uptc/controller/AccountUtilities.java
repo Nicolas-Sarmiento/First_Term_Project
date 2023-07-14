@@ -72,9 +72,11 @@ public class AccountUtilities{
      * @param roles rol a comparar
      * @return retorna si el rol el valido
      */
-    public boolean validateRole(Roles roles){
-        if(roles.equals(Roles.ADMINISTRATOR)||roles.equals(Roles.DIRECTOR)||roles.equals(Roles.PROFESSOR)||roles.equals(Roles.SECRETARY)||roles.equals(Roles.STUDENT)){
-            return true;
+    public boolean validateRole(String roles){
+        for (Roles s:Roles.values()) {
+            if(s.name().equalsIgnoreCase(roles)){
+                return true;
+            }
         }
         return false;
     }//cierre método
