@@ -40,7 +40,7 @@ public class LoginController {
      * solo lo permite si ya inicio sesion.
      * Se debe ingresar la priemr contraseña y luego ahi si procede al cambio
      * si  introduce mal la ontraseña original el cambio se cancela
-     * @param oldpasword,newpassword ambos ingresados por usuario
+     * @param oldpassword,newpassword ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * cambia la contraseña.
     * 
@@ -115,8 +115,9 @@ public class LoginController {
         }
         return "No ha inciado sesion";
     }
-
-
+    public String showAccounts(){
+        return acc.showAccounts();
+    }
 
      /**
      *Metodo para  precargar estudaintes
