@@ -53,8 +53,8 @@ public class AccountController {
         String email = "";
 
         id = id.toLowerCase();
-        name = name.toLowerCase();
-        lastName = lastName.toLowerCase();
+        name = name.toLowerCase().replaceFirst(" ", "");
+        lastName = lastName.toLowerCase().replaceFirst(" ", "");
         role = role.toUpperCase();
 
 
@@ -153,7 +153,6 @@ public class AccountController {
         }
         return usernames;
     }
-
 
 
 }
