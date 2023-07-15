@@ -123,8 +123,10 @@ public class AccountUtilities{
                 count++;
             }
         }
-        if(count!=0){
-           return newName[0]+"."+newLastNames[0]+count;
+        if(count!=0&&count<10){
+           return newName[0]+"."+newLastNames[0]+"0"+count;
+        } else if (count!=0) {
+            return newName[0]+"."+newLastNames[0]+count;
         }
         return newName[0]+"."+newLastNames[0];
     }//cierre método
@@ -137,4 +139,15 @@ public class AccountUtilities{
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
     }//cierre método
+
+    /**
+     * Método para ponerlo en minuscula y eliminar espacios innecesarios
+     * @param name
+     * @return nombre sin espacios y en minuscula
+     */
+    public String cleanNames(String name){
+        String cleanName =  name.toLowerCase();
+        if (cleanName.startsWith(" ")) return cleanName.replaceFirst(" ", "");
+        return cleanName;
+    }
 }//cierre clase
