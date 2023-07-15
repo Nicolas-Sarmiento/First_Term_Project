@@ -97,7 +97,7 @@ public class AccountUtilities{
      * Método para generar el correo de la persona que se registra
      * @return retorna el correo con la extension de la universidad
      */
-    public String generateEmail(String user, String[] userNames){
+    public String generateEmail(String user){
         return user+"@uptc.edu.co";
     }//cierre método
     public String generateUser(String names,String lastNames,String[] userNames){
@@ -121,5 +121,12 @@ public class AccountUtilities{
     }
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
+    }
+
+
+    public String cleanNames(String name){
+        String cleanName =  name.toLowerCase();
+        if (cleanName.startsWith(" ")) return cleanName.replaceFirst(" ", "");
+        return cleanName;
     }
 }//cierre clase

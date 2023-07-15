@@ -2,7 +2,9 @@ package co.edu.uptc.controller;
 
 import co.edu.uptc.model.Account;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -49,24 +51,22 @@ public class AccountController {
      * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
      */
     public boolean addAccount(String id, String name, String lastName, String password, String role){
-        String username = name+lastName;
+        String username = "";
         String email = "";
 
         id = id.toLowerCase();
-        name = name.toLowerCase().replaceFirst(" ", "");
-        lastName = lastName.toLowerCase().replaceFirst(" ", "");
+        name = this.utility.cleanNames(name);
+        lastName = this.utility.cleanNames(lastName);
         role = role.toUpperCase();
-
+        username = this.utility.generateUser(name, lastName, this.getUsernames());
+        email = this.utility.generateEmail(username);
 
         if (!this.utility.validateId(id) && !this.utility.validateName(name) && !this.utility.validateName(lastName) && !this.utility.validatePassword(password)
         && !this.utility.validateRole(role)) return false;
 
-
         Account newAccount = new Account(id, name, lastName, username, password, role, email);
 
         if (this.accounts.contains(newAccount)) return false;
-
-
         this.accounts.add(newAccount);
 
         return true;
@@ -104,7 +104,7 @@ public class AccountController {
     /**
      * Permite el cambio de contraseña de una cuenta a partir
      * de usuario y contraseña
-     * @param username
+     * @param username usuario de la cuenta a cambiar contraseña
      * @param password contraseña antigua
      * @param newPassword contraseña nueva
      * @return true si el cambio fue satisfactorio, false si no se encontró la cuenta o la nueva contraseña es inválida
@@ -152,6 +152,15 @@ public class AccountController {
             usernames[i] = listAccount.get(i).getUserName();
         }
         return usernames;
+    }
+
+    public String showAccounts(){
+        String accountsInfo = "{";
+        for (Account acc : this.accounts){
+            accountsInfo += acc.toString() + "\n";
+        }
+        accountsInfo += "}";
+        return accountsInfo;
     }
 
 
