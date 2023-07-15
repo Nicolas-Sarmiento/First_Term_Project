@@ -123,8 +123,10 @@ public class AccountUtilities{
                 count++;
             }
         }
-        if(count!=0){
-           return newName[0]+"."+newLastNames[0]+count;
+        if(count!=0&&count<10){
+           return newName[0]+"."+newLastNames[0]+"0"+count;
+        } else if (count!=0) {
+            return newName[0]+"."+newLastNames[0]+count;
         }
         return newName[0]+"."+newLastNames[0];
     }//cierre método
@@ -136,8 +138,10 @@ public class AccountUtilities{
      */
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
-<<<<<<< HEAD
-=======
     }//cierre método
->>>>>>> 741f68ca72b1442642bc9e494da31236fcf96ef6
+    public String cleanNames(String name){
+        String cleanName =  name.toLowerCase();
+        if (cleanName.startsWith(" ")) return cleanName.replaceFirst(" ", "");
+        return cleanName;
+    }
 }//cierre clase
