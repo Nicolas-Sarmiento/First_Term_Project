@@ -1,6 +1,13 @@
 package co.edu.uptc.model;
 
 import java.util.Objects;
+/*
+    La clase Account comprende los atributos que conforma una cuenta
+    de la uptc, maneja los atributos de nombre, código, usuario, contraseña, rol en la universida
+    y correo institucional
+    @author Nicolas Sarmiento vargas : Nicolas-Sarmiento
+    @version 1.0.0
+*/
 
 public class Account {
 
@@ -80,6 +87,10 @@ public class Account {
         this.email = email;
     }
 
+    /*
+    Los métodos equals y hashcode se sobreescribieron para poder utilizar un
+    HashSet como controlador de la clase Account
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, name, lastname, userName, password, role, email);
