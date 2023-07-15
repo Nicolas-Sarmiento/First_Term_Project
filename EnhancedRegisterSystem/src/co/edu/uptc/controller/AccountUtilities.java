@@ -95,12 +95,31 @@ public class AccountUtilities{
 
     /**
      * Método para generar el correo de la persona que se registra
-     * @param names nombre de la persona
-     * @param lastNames apellido de la persona
      * @return retorna el correo con la extension de la universidad
      */
-    public String generateEmail(String names, String lastNames){
-        String userName=names+"."+lastNames;
-        return userName+"@uptc.edu.co";
+    public String generateEmail(String user, String[] userNames){
+        return user+"@uptc.edu.co";
     }//cierre método
+    public String generateUser(String names,String lastNames,String[] userNames){
+        String[] newUserNames=new String[userNames.length];
+        String[] newName=names.split(" ");
+        String[] newLastNames=lastNames.split(" ");
+        String aux=newName[0]+newLastNames[0];
+        int count=0;
+        for (int i=0;i< userNames.length;i++) {
+            newUserNames[i]=removeDigits(userNames[i]);
+        }
+        for (String s:newUserNames) {
+            if(s.equals(aux)){
+                count++;
+            }
+        }
+        if(count!=0){
+           return newName[0]+"."+newLastNames[0]+count;
+        }
+        return newName[0]+"."+newLastNames[0];
+    }
+    public String removeDigits(String userName){
+        return userName.replaceAll("[^a-z]","");
+    }
 }//cierre clase
