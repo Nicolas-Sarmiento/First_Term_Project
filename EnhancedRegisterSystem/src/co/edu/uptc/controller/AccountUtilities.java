@@ -136,8 +136,5 @@ public class AccountUtilities{
      */
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
-<<<<<<< HEAD
-=======
     }//cierre método
->>>>>>> 741f68ca72b1442642bc9e494da31236fcf96ef6
 }//cierre clase
