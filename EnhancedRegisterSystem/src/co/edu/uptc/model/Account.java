@@ -1,5 +1,7 @@
 package co.edu.uptc.model;
 
+import java.util.Objects;
+
 public class Account {
 
     private String id;
@@ -77,4 +79,23 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, lastname, userName, password, role, email);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Account)) return false;
+
+        Account objAccount = (Account) obj;
+
+        return this.id.equals(objAccount.getId()) && this.name.equals(objAccount.getName()) &&
+                this.lastname.equals(objAccount.getLastname()) && this.userName.equals(objAccount.getUserName()) &&
+                this.password.equals(objAccount.getPassword()) && this.role.equals(objAccount.getRole()) && this.email.equals(objAccount.getEmail());
+    }
+
+
 }
