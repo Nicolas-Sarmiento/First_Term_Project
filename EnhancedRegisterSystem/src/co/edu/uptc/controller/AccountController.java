@@ -135,7 +135,16 @@ public class AccountController {
      * @param account cuenta a ser clonada
      * @return Account object con los atributos de la cuenta ingresada
      */
+    private Account cloneAccount(Account account){
+        return new Account(account.getId(), account.getName(), account.getLastname(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
+    }
 
+    /**
+     * Retorna los usuarios en un arreglo, este método se utiliza para
+     * la generación de usuarios
+     * @return String[] retorna todos los usuarios de la colección de cuentas
+     * @Author  Nicolas Sarmiento : Nicolas-Sarmiento
+     */
     public String[] getUsernames(){
         String[] usernames = new String[this.accounts.size()];
         ArrayList<Account> listAccount = new ArrayList<>(this.accounts);
@@ -144,9 +153,7 @@ public class AccountController {
         }
         return usernames;
     }
-    private Account cloneAccount(Account account){
-        return new Account(account.getId(), account.getName(), account.getLastname(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
-    }
+
 
 
 }
