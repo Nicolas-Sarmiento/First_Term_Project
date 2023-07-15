@@ -95,11 +95,20 @@ public class AccountUtilities{
 
     /**
      * Método para generar el correo de la persona que se registra
+     * @param user es el nombre de usuario
      * @return retorna el correo con la extension de la universidad
      */
-    public String generateEmail(String user, String[] userNames){
+    public String generateEmail(String user){
         return user+"@uptc.edu.co";
     }//cierre método
+
+    /**
+     * Método para generar el usuario de la persona añadiendo un numero si esta repetido
+     * @param names son los nombres del usuario
+     * @param lastNames apellidos del usuario
+     * @param userNames la lista de usuarios registrados para comparar
+     * @return retorna el usuario con un numero si ya existe un usuario parecido
+     */
     public String generateUser(String names,String lastNames,String[] userNames){
         String[] newUserNames=new String[userNames.length];
         String[] newName=names.split(" ");
@@ -118,8 +127,14 @@ public class AccountUtilities{
            return newName[0]+"."+newLastNames[0]+count;
         }
         return newName[0]+"."+newLastNames[0];
-    }
+    }//cierre método
+
+    /**
+     * Método para eliminar los número y caracteres especiales de los usuarios
+     * @param userName es el nombre de usuario a eliminar números y caracteres especiales
+     * @return retorna un nombre de usuario sin números y caracteres especiales
+     */
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
-    }
+    }//cierre método
 }//cierre clase
