@@ -2,6 +2,7 @@ package co.edu.uptc.controller;
 
 import co.edu.uptc.model.Account;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class AccountController {
      * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
      */
     public boolean addAccount(String id, String name, String lastName, String password, String role){
-        String username = "";
+        String username = name+lastName;
         String email = "";
 
         id = id.toLowerCase();
@@ -134,7 +135,18 @@ public class AccountController {
      * @param account cuenta a ser clonada
      * @return Account object con los atributos de la cuenta ingresada
      */
+
+    public String[] getUsernames(){
+        String[] usernames = new String[this.accounts.size()];
+        ArrayList<Account> listAccount = new ArrayList<>(this.accounts);
+        for (int i = 0; i < usernames.length; i++){
+            usernames[i] = listAccount.get(i).getUserName();
+        }
+        return usernames;
+    }
     private Account cloneAccount(Account account){
         return new Account(account.getId(), account.getName(), account.getLastname(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
     }
+
+
 }
