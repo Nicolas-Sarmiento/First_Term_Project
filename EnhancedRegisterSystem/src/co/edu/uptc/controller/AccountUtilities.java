@@ -36,7 +36,7 @@ public class AccountUtilities{
             }
         }
         //verificacion que contenga los tres parametros para ser segura
-        if(flagUpper&&flagLower&&count>2&&password.length()>=6&&password.length()<=15){
+        if(flagUpper && flagLower && count>2 && password.length()>=6 && password.length()<=15){
             return true;
         }
         return false;

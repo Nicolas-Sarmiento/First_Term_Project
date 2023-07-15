@@ -120,10 +120,14 @@ public class AccountController {
                 tempAccount.setPassword(newPassword);
                 this.accounts.remove(acc);
                 this.accounts.add(tempAccount);
+
+                 System.out.println("CAMBIO O NO  " + tempAccount.getPassword());
+
                 return true;
             };
         }
 
+       
 
         return false;
     }
