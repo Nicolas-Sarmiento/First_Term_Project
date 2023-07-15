@@ -93,7 +93,7 @@ public class Account {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastname, userName, password, role, email);
+        return Objects.hash(id, name, lastname, password, role);
     }
 
     @Override
@@ -104,9 +104,20 @@ public class Account {
         Account objAccount = (Account) obj;
 
         return this.id.equals(objAccount.getId()) && this.name.equals(objAccount.getName()) &&
-                this.lastname.equals(objAccount.getLastname()) && this.userName.equals(objAccount.getUserName()) &&
-                this.password.equals(objAccount.getPassword()) && this.role.equals(objAccount.getRole()) && this.email.equals(objAccount.getEmail());
+                this.lastname.equals(objAccount.getLastname())  && this.password.equals(objAccount.getPassword()) &&
+                this.role.equals(objAccount.getRole());
     }
 
-
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
