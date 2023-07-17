@@ -61,8 +61,8 @@ public class AccountController {
         username = this.utility.generateUser(name, lastName, this.getUsernames());
         email = this.utility.generateEmail(username);
 
-        if (!this.utility.validateId(id) && !this.utility.validateName(name) && !this.utility.validateName(lastName) && !this.utility.validatePassword(password)
-        && !this.utility.validateRole(role)) return false;
+        if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(password)
+        || !this.utility.validateRole(role)) return false;
 
         Account newAccount = new Account(id, name, lastName, username, password, role, email);
 
