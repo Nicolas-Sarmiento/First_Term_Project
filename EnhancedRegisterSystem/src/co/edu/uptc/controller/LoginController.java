@@ -3,8 +3,8 @@ import co.edu.uptc.model.Account;
 import co.edu.uptc.controller.AccountController;
   /**
      * La clase loginController se encargar de verificar
-     * los datos ingrsados, valida y guarda el usuario
-     * en el atributo loggedAcount, admeas
+     * los datos ingresados, valida y guarda el usuario
+     * en el atributo loggedAcount
      * 
      * @author Samuel Gonzalez Zambrano
      * @version  1.0.0
@@ -18,7 +18,7 @@ public class LoginController {
     /**
      * Metodo principal, verifica el nombre y contra
       * si coincide con algun usuario lo trae y lo guarda
-     * en logged acount
+     * en loggedAcount
      * @param nameUser,password ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * guarda el usuario y retorona true.
@@ -38,9 +38,9 @@ public class LoginController {
     /**
      * Permite al usuario que ingreso cambiar su contraseña,
      * solo lo permite si ya inicio sesion.
-     * Se debe ingresar la priemr contraseña y luego ahi si procede al cambio
-     * si  introduce mal la ontraseña original el cambio se cancela
-     * @param oldpassword,newpassword ambos ingresados por usuario
+     * Se debe ingresar la primera contraseña y luego ahi si procede al cambio
+     * si  introduce mal la contraseña original, el cambio se cancela
+     * @param oldpasword,newpassword ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * cambia la contraseña.
     * 
@@ -82,7 +82,7 @@ public class LoginController {
      * @param id docuemnto del usuario
      * @param password contraseña ingresada por el usuario
      * @param role Especificacion del rol del usuario a crear
-     * @return boolena de control, si algo falla se cancela el proceso .
+     * @return boolean de control, si algo falla se cancela el proceso .
     * 
  */
 
@@ -115,12 +115,15 @@ public class LoginController {
         }
         return "No ha inciado sesion";
     }
+
+    //MAFDASDASDASDASFASFASFASFASF********************************************************
+
     public String showAccounts(){
         return acc.showAccounts();
     }
 
      /**
-     *Metodo para  precargar estudaintes
+     *Metodo para  precargar estudaintes, funciona para testear
     */
     public void loadAccounts(){
         acc.loadAccounts();
