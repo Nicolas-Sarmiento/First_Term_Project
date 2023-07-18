@@ -3,8 +3,8 @@ import co.edu.uptc.model.Account;
 import co.edu.uptc.controller.AccountController;
   /**
      * La clase loginController se encargar de verificar
-     * los datos ingrsados, valida y guarda el usuario
-     * en el atributo loggedAcount, admeas
+     * los datos ingresados, valida y guarda el usuario
+     * en el atributo loggedAcount
      * 
      * @author Samuel Gonzalez Zambrano
      * @version  1.0.0
@@ -18,7 +18,7 @@ public class LoginController {
     /**
      * Metodo principal, verifica el nombre y contra
       * si coincide con algun usuario lo trae y lo guarda
-     * en logged acount
+     * en loggedAcount
      * @param nameUser,password ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * guarda el usuario y retorona true.
@@ -38,8 +38,8 @@ public class LoginController {
     /**
      * Permite al usuario que ingreso cambiar su contraseña,
      * solo lo permite si ya inicio sesion.
-     * Se debe ingresar la priemr contraseña y luego ahi si procede al cambio
-     * si  introduce mal la ontraseña original el cambio se cancela
+     * Se debe ingresar la primera contraseña y luego ahi si procede al cambio
+     * si  introduce mal la contraseña original, el cambio se cancela
      * @param oldpassword,newpassword ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * cambia la contraseña.
@@ -48,12 +48,13 @@ public class LoginController {
 
     public boolean changePassword(String oldpassword, String newPassword){
         try {
-            if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)){
-            boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
-            loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
-            return methodAnswer;
-
-        } 
+            if(oldpassword.equals(newPassword)){
+                return false;
+            } else if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)){
+                boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
+                loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
+                return methodAnswer;
+            }
         } catch (Exception e) {}
        
 
@@ -82,12 +83,19 @@ public class LoginController {
      * @param id docuemnto del usuario
      * @param password contraseña ingresada por el usuario
      * @param role Especificacion del rol del usuario a crear
-     * @return boolena de control, si algo falla se cancela el proceso .
+     * @return boolean de control, si algo falla se cancela el proceso .
     * 
  */
 
     public boolean signin(String name, String lastName, String id, String password, String role){
         return acc.addAccount(id, name, lastName, password, role);
+    }
+      /**
+       * getUserName devuelve el usuario generado
+       * @return String con el usuario generado
+       */
+    public String getUserName(){
+        return acc.getUsername();
     }
     
     /**
@@ -115,12 +123,18 @@ public class LoginController {
         }
         return "No ha inciado sesion";
     }
+
+      /**
+       * Este método muestra todas las cuentas existentes hasta el momento
+       * @return un String con todas la cuentas
+       */
+
     public String showAccounts(){
         return acc.showAccounts();
     }
 
      /**
-     *Metodo para  precargar estudaintes
+     *Metodo para  precargar estudaintes, funciona para testear
     */
     public void loadAccounts(){
         acc.loadAccounts();

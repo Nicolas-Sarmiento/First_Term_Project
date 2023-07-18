@@ -115,7 +115,6 @@ public class Account {
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 '}';

@@ -1,21 +1,24 @@
-package co.edu.uptc.controller;
+package co.edu.uptc.test;
+
+import co.edu.uptc.controller.LoginController;
 
 import java.util.Scanner;
 
 /**
  * Esta clase es para mostrar el menu con sus funciones
  * para que se pueda intancias sin tener que hacer cambios en la logica
- * @author Edwin Mrtinez
+ * @author Edwin Martinez
+ * @author Samuel Gonzalez
  */
 public class LoginView {
 
-    private LoginController loginController=new LoginController();
-    private Scanner sc =new Scanner(System.in);
+    private static LoginController loginController=new LoginController();
+    private static Scanner sc =new Scanner(System.in);
     /**
      *Este el metodo principal que muestra el menu
      */
-    public void menu() {
-        int decision,count;
+    public static void main(String[] args) {
+        int decision;
         String names,lastNames,id,password,role,userName;
         do {
             System.out.println("=============================\n" +
@@ -40,7 +43,8 @@ public class LoginView {
                     System.out.println("\tType your password (with a capital letter, a lower case letter, at least 6 and 15 in length)");
                     password=sc.nextLine();
                     if(loginController.signin(names,lastNames,id,password,role)){
-                        System.out.println("you successfully registered");
+                        System.out.println("you successfully registered\n" +
+                                "your user name is: "+loginController.getUserName());
                     }else {
                         System.out.println("Erros with your data");
                     }
@@ -66,7 +70,7 @@ public class LoginView {
     /**
      * Este método muesta las opciones despues del login
      */
-    public void login(){
+    public static void login(){
         System.out.println(loginController.showInfoLoggedAcount());
         String role= loginController.showRol();
         switch (role){
@@ -91,7 +95,7 @@ public class LoginView {
     /**
      * Este método muesta la opcion para Administrador, Director, Secretaria de mostrar todas las cuentas
      */
-    public void optionsGeneralsLogin(){
+    public static void optionsGeneralsLogin(){
         int decision;
         do{
             System.out.println("========================\n" +
@@ -105,7 +109,7 @@ public class LoginView {
             if(decision==1){
                 System.out.println(loginController.showAccounts());
             }else if(decision==2){
-                System.out.println("\tType new password");
+                System.out.println("\tType old password");
                 String oldPassword=sc.nextLine();
                 System.out.println("\tType new password");
                 String newPassword=sc.nextLine();
@@ -127,7 +131,7 @@ public class LoginView {
     /**
      * Este método muestra las opciones basicas para personas que no tienen permisos especiales
      */
-    public void optionsBasic(){
+    public static void optionsBasic(){
         int decision;
         do{
             System.out.println("========================\n" +
@@ -138,7 +142,7 @@ public class LoginView {
             decision=sc.nextInt();
             sc.nextLine();
             if(decision==1){
-                System.out.println("\tType new password");
+                System.out.println("\tType old password");
                 String oldPassword=sc.nextLine();
                 System.out.println("\tType new password");
                 String newPassword=sc.nextLine();

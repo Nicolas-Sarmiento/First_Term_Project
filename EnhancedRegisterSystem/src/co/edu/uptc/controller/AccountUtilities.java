@@ -61,7 +61,7 @@ public class AccountUtilities{
      * @return retorna si esta o no vacio
      */
     public boolean validateName(String name){
-        if(name!=null&&name!=""){
+        if(name!=null&&name!=" "){
             return true;
         }
         return false;
@@ -87,7 +87,7 @@ public class AccountUtilities{
      * @return retorna si esta o no vacio
      */
     public boolean validateId(String id){
-        if(id!=null&&id!=""){
+        if(id!=null&&id!=" "){
             return true;
         }
         return false;
@@ -110,25 +110,29 @@ public class AccountUtilities{
      * @return retorna el usuario con un numero si ya existe un usuario parecido
      */
     public String generateUser(String names,String lastNames,String[] userNames){
-        String[] newUserNames=new String[userNames.length];
-        String[] newName=names.split(" ");
-        String[] newLastNames=lastNames.split(" ");
-        String aux=newName[0]+newLastNames[0];
-        int count=0;
-        for (int i=0;i< userNames.length;i++) {
-            newUserNames[i]=removeDigits(userNames[i]);
-        }
-        for (String s:newUserNames) {
-            if(s.equals(aux)){
-                count++;
+        try {
+            String[] newUserNames = new String[userNames.length];
+            String[] newName = names.split(" ");
+            String[] newLastNames = lastNames.split(" ");
+            String aux = newName[0] + newLastNames[0];
+            int count = 0;
+            for (int i = 0; i < userNames.length; i++) {
+                newUserNames[i] = removeDigits(userNames[i]);
             }
+            for (String s : newUserNames) {
+                if (s.equals(aux)) {
+                    count++;
+                }
+            }
+            if (count != 0 && count < 10) {
+                return newName[0] + "." + newLastNames[0] + "0" + count;
+            } else if (count != 0) {
+                return newName[0] + "." + newLastNames[0] + count;
+            }
+            return newName[0] + "." + newLastNames[0];
+        }catch (ArrayIndexOutOfBoundsException e){
+            return " ";
         }
-        if(count!=0&&count<10){
-           return newName[0]+"."+newLastNames[0]+"0"+count;
-        } else if (count!=0) {
-            return newName[0]+"."+newLastNames[0]+count;
-        }
-        return newName[0]+"."+newLastNames[0];
     }//cierre método
 
     /**
