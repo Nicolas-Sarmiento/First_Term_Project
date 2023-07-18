@@ -105,7 +105,7 @@ public class LoginView {
             if(decision==1){
                 System.out.println(loginController.showAccounts());
             }else if(decision==2){
-                System.out.println("\tType new password");
+                System.out.println("\tType old password");
                 String oldPassword=sc.nextLine();
                 System.out.println("\tType new password");
                 String newPassword=sc.nextLine();
@@ -138,7 +138,7 @@ public class LoginView {
             decision=sc.nextInt();
             sc.nextLine();
             if(decision==1){
-                System.out.println("\tType new password");
+                System.out.println("\tType old password");
                 String oldPassword=sc.nextLine();
                 System.out.println("\tType new password");
                 String newPassword=sc.nextLine();

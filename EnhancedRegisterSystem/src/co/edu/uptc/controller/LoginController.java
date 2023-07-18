@@ -40,7 +40,7 @@ public class LoginController {
      * solo lo permite si ya inicio sesion.
      * Se debe ingresar la primera contraseña y luego ahi si procede al cambio
      * si  introduce mal la contraseña original, el cambio se cancela
-     * @param oldpasword,newpassword ambos ingresados por usuario
+     * @param oldpassword,newpassword ambos ingresados por usuario
      * @return Si las credeciales ingresadas son validas 
      * cambia la contraseña.
     * 
@@ -48,7 +48,7 @@ public class LoginController {
 
     public boolean changePassword(String oldpassword, String newPassword){
         try {
-            if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)){
+            if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)&&oldpassword!=newPassword){
             boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
             loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
             return methodAnswer;
@@ -116,7 +116,10 @@ public class LoginController {
         return "No ha inciado sesion";
     }
 
-    //MAFDASDASDASDASFASFASFASFASF********************************************************
+      /**
+       * Este método muestra todas las cuentas existentes hasta el momento
+       * @return un String con todas la cuentas
+       */
 
     public String showAccounts(){
         return acc.showAccounts();
