@@ -20,6 +20,7 @@ import java.util.List;
 public class AccountController {
     private HashSet<Account> accounts;
     private AccountUtilities utility;
+    private String username = "";
     private final Account[] defaultAccounts = {
         new Account("202210568","manuel fernando", "martinez delgado", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
         new Account("2021456", "maria fernanda","rodriguez vargas","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
@@ -51,18 +52,17 @@ public class AccountController {
      * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
      */
     public boolean addAccount(String id, String name, String lastName, String password, String role){
-        String username = "";
         String email = "";
 
         id = id.toLowerCase();
         name = this.utility.cleanNames(name);
         lastName = this.utility.cleanNames(lastName);
         role = role.toUpperCase();
-        username = this.utility.generateUser(name, lastName, this.getUsernames());
+        this.username = this.utility.generateUser(name, lastName, this.getUsernames());
+        if(this.username.equals(" ")) return false;
         email = this.utility.generateEmail(username);
-
-        if (!this.utility.validateId(id) && !this.utility.validateName(name) && !this.utility.validateName(lastName) && !this.utility.validatePassword(password)
-        && !this.utility.validateRole(role)) return false;
+        if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(password)
+        || !this.utility.validateRole(role)) return false;
 
         Account newAccount = new Account(id, name, lastName, username, password, role, email);
 
@@ -72,6 +72,13 @@ public class AccountController {
         return true;
     }
 
+    /**
+     * getUserName devuelve el usuario generado
+     * @return String con el usuario generado
+     */
+    public String getUsername(){
+        return this.username;
+    }
     /**
      * findAccount permite la busqueda de una cuenta a partir de
      * usuario y contraseña
@@ -125,7 +132,6 @@ public class AccountController {
         }
         return false;
     }
-
     /**
      * Pequeña utilidad que se utiliza en el cambio de contraseña,
      * debido a que se requiere crear un nuevo objeto para que se genere

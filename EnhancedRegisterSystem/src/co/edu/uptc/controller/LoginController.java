@@ -48,12 +48,13 @@ public class LoginController {
 
     public boolean changePassword(String oldpassword, String newPassword){
         try {
-            if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)&&oldpassword!=newPassword){
-            boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
-            loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
-            return methodAnswer;
-
-        } 
+            if(oldpassword.equals(newPassword)){
+                return false;
+            } else if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)){
+                boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
+                loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
+                return methodAnswer;
+            }
         } catch (Exception e) {}
        
 
@@ -88,6 +89,13 @@ public class LoginController {
 
     public boolean signin(String name, String lastName, String id, String password, String role){
         return acc.addAccount(id, name, lastName, password, role);
+    }
+      /**
+       * getUserName devuelve el usuario generado
+       * @return String con el usuario generado
+       */
+    public String getUserName(){
+        return acc.getUsername();
     }
     
     /**
