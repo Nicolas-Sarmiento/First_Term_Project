@@ -11,10 +11,14 @@ import co.edu.uptc.controller.AccountController;
      * 
  */
 public class LoginController {
-    Account loggedAcount = new Account();
-    AccountController acc = new AccountController();
+    Account loggedAcount;
+    AccountController acc;
   
-    
+    public LoginController(){
+        this.loggedAcount = new Account();
+        this.acc = new AccountController();
+        this.acc.loadAccounts();
+    }
     /**
      * Metodo principal, verifica el nombre y contra
       * si coincide con algun usuario lo trae y lo guarda
