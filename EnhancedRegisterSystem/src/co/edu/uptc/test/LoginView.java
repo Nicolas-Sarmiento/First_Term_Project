@@ -15,6 +15,7 @@ public class LoginView {
 
     private static LoginController loginController=new LoginController();
     private static Scanner sc =new Scanner(System.in);
+    private static String[] roles={new String("Student"),new String("Professor"),new String("Secretary"),new String("Administrator") };
     /**
      *Este el metodo principal que muestra el menu
      */
@@ -24,33 +25,14 @@ public class LoginView {
         do {
             System.out.println("=============================\n" +
                     "|\t\tUPTC Options\t\t|\n" +
-                    "|\t\t1.Sing in\t\t\t|\n" +
-                    "|\t\t2.Login\t\t\t\t|\n" +
-                    "|\t\t3.Exit\t\t\t\t|\n" +
+                    "|\t\t1.Login\t\t\t\t|\n" +
+                    "|\t\t2.Exit\t\t\t\t|\n" +
                     "=============================");
             System.out.print("Selection -------->");
             decision= sc.nextInt();
             sc.nextLine();
             switch (decision){
                 case 1:{
-                    System.out.println("\tType their names");
-                    names=sc.nextLine();
-                    System.out.println("\tType your last name");
-                    lastNames=sc.nextLine();
-                    System.out.println("\tType your identification");
-                    id=sc.nextLine();
-                    System.out.println("\tType your role in the university");
-                    role=sc.nextLine();
-                    System.out.println("\tType your password (with a capital letter, a lower case letter, at least 6 and 15 in length)");
-                    password=sc.nextLine();
-                    if(loginController.signin(names,lastNames,id,role)){
-                        System.out.println("you successfully registered\n" +
-                                "your user name is: "+loginController.getUserName());
-                    }else {
-                        System.out.println("Erros with your data");
-                    }
-                }break;
-                case 2:{
                     System.out.println("\tType your user name");
                     userName=sc.nextLine();
                     System.out.println("\tType your password");
@@ -58,14 +40,14 @@ public class LoginView {
                     if (loginController.login(userName, password)) {
                             login();
                     } else {
-                            System.out.println("Error User name or password incorrect");
+                            System.out.println("User name or password incorrect");
                     }
                 }break;
-                case 3:{
+                case 2:{
                     System.out.println("Coming out....");
                 }
             }
-        }while (decision!=3);
+        }while (decision!=2);
     }
 
     /**
@@ -79,10 +61,10 @@ public class LoginView {
                 optionsGeneralsLogin();
             }break;
             case "DIRECTOR":{
-                optionsGeneralsLogin();
+                optionsBasic();
             }break;
             case "SECRETARY":{
-                optionsGeneralsLogin();
+                optionsBasic();
             }break;
             case "PROFESSOR":{
                 optionsBasic();
@@ -97,19 +79,37 @@ public class LoginView {
      * Este método muesta la opcion para Administrador, Director, Secretaria de mostrar todas las cuentas
      */
     public static void optionsGeneralsLogin(){
-        int decision;
+        int decision,role;
+        String names,lastNames,id;
         do{
             System.out.println("========================\n" +
-                    "|\t1.see counts\t\t|\n" +
-                    "|\t2.change password\t|\n" +
-                    "|\t3.logout\t\t\t|\n" +
+                    "|\t1.Sing in accounts\t|\n" +
+                    "|\t2.see accounts\t\t|\n" +
+                    "|\t3.change password\t|\n" +
+                    "|\t4.logout\t\t\t|\n" +
                     "========================");
             System.out.print("Selection ----->");
             decision=sc.nextInt();
             sc.nextLine();
             if(decision==1){
-                System.out.println(loginController.showAccounts());
+                System.out.println("\tType their names");
+                names=sc.nextLine();
+                System.out.println("\tType your last name");
+                lastNames=sc.nextLine();
+                System.out.println("\tType your identification");
+                id=sc.nextLine();
+                System.out.println("\tType your role in the university\n\t1.Student\n\t2.Professor\n\t3.Secretary");
+                role=sc.nextInt();
+                sc.nextLine();
+                if(loginController.signin(names,lastNames,id,roles[role-1])){
+                    System.out.println("you successfully registered\n" +
+                            "your user name is: "+loginController.getUserName());
+                }else {
+                    System.out.println("Error with your data");
+                }
             }else if(decision==2){
+                System.out.println(loginController.showAccounts());
+            }else if(decision==3){
                 System.out.println("\tType old password");
                 String oldPassword=sc.nextLine();
                 System.out.println("\tType new password");
@@ -119,14 +119,14 @@ public class LoginView {
                 }else {
                     System.out.println("Error");
                 }
-            }else if(decision==3){
+            }else if(decision==4){
                 if(loginController.logout()){
                     System.out.println("logout..");
                 }else {
                     System.out.println("Error");
                 }
             }
-        }while(decision!=3);
+        }while(decision!=4);
     }
 
     /**
