@@ -21,13 +21,13 @@ public class AccountController {
     private AccountUtilities utility;
     private String username = "";
     private final Account[] defaultAccounts = {
-        new Account("202210568","manuel fernando", "martinez delgado", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
-        new Account("2021456", "maria fernanda","rodriguez vargas","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
-        new Account("2020154", "juan david","velandia gonzalez","juan.velandia","njksAPO293",Roles.STUDENT.name(), "juan.velandia@uptc.edu.co"),
-        new Account("2022159", "maria jose","rodriguez castillo","maria.rodriguez01","HJAkjsf234",Roles.STUDENT.name(), "maria.rodriguez01@uptc.edu.co"),
-        new Account("46389778", "johana","torres perez","johana.torres","JKJfsdhf334",Roles.PROFESSOR.name(), "johana.torres@uptc.edu.co"),
-        new Account("10953483", "ivan santiago","mendoza paez","ivan.mendoza","HJ23jkil",Roles.PROFESSOR.name(), "ivan.mendoza@uptc.edu.co"),
-        new Account("47865421", "laura daniela","castillo perez","laura.castillo","jaklsBJ832",Roles.ADMINISTRATOR.name(), "laura.castillo@uptc.edu.co")
+        new Account("202210568", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
+        new Account("2021456","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
+        new Account("2020154", "juan.velandia","njksAPO293",Roles.STUDENT.name(), "juan.velandia@uptc.edu.co"),
+        new Account("2022159", "maria.rodriguez01","HJAkjsf234",Roles.STUDENT.name(), "maria.rodriguez01@uptc.edu.co"),
+        new Account("46389778", "johana.torres","JKJfsdhf334",Roles.PROFESSOR.name(), "johana.torres@uptc.edu.co"),
+        new Account("10953483","ivan.mendoza","HJ23jkil",Roles.PROFESSOR.name(), "ivan.mendoza@uptc.edu.co"),
+        new Account("47865421","laura.castillo","jaklsBJ832",Roles.ADMINISTRATOR.name(), "laura.castillo@uptc.edu.co")
     };
 
     public AccountController(){
@@ -63,7 +63,7 @@ public class AccountController {
         if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(password)
         || !this.utility.validateRole(role)) return false;
 
-        Account newAccount = new Account(id, name, lastName, username, password, role, email);
+        Account newAccount = new Account(id, username, password, role, email);
 
         if (this.accounts.contains(newAccount)) return false;
         this.accounts.add(newAccount);
@@ -139,7 +139,7 @@ public class AccountController {
      * @return Account object con los atributos de la cuenta ingresada
      */
     private Account cloneAccount(Account account){
-        return new Account(account.getId(), account.getName(), account.getLastname(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
+        return new Account(account.getId(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
     }
 
     /**

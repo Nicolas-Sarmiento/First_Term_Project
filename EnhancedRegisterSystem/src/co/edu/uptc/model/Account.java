@@ -12,17 +12,13 @@ import java.util.Objects;
 public class Account {
 
     private String id;
-    private String name;
-    private String lastname;
     private String userName;
     private String password;
     private String role;
     private String email;
 
-    public Account(String id, String name, String lastname, String userName, String password, String role, String email) {
-        this.id = id;
-        this.name = name;
-        this.lastname = lastname;
+    public Account(String id, String userName, String password, String role, String email) {
+
         this.userName = userName;
         this.password = password;
         this.role = role;
@@ -31,29 +27,7 @@ public class Account {
 
     public Account(){}
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+   
 
     public String getUserName() {
         return userName;
@@ -61,6 +35,14 @@ public class Account {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPassword() {
@@ -93,7 +75,7 @@ public class Account {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastname, password, role);
+        return Objects.hash(id, password, role);
     }
 
     @Override
@@ -103,17 +85,13 @@ public class Account {
 
         Account objAccount = (Account) obj;
 
-        return this.id.equals(objAccount.getId()) && this.name.equals(objAccount.getName()) &&
-                this.lastname.equals(objAccount.getLastname())  && this.password.equals(objAccount.getPassword()) &&
+        return this.id.equals(objAccount.getId()) && this.password.equals(objAccount.getPassword()) &&
                 this.role.equals(objAccount.getRole());
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
                 ", userName='" + userName + '\'' +
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
