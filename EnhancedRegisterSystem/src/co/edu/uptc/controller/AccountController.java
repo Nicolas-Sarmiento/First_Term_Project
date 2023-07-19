@@ -4,6 +4,7 @@ import co.edu.uptc.model.Account;
 import co.edu.uptc.utilities.AccountUtilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -50,8 +51,9 @@ public class AccountController {
      * @param role Rol que tiene el miembro en la institución
      * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
      */
-    public boolean addAccount(String id, String name, String lastName, String password, String role){
+    public boolean addAccount(String id, String name, String lastName, String role){
         String email = "";
+        String password = "";
 
         id = id.toLowerCase();
         name = this.utility.cleanNames(name);
@@ -60,6 +62,9 @@ public class AccountController {
         this.username = this.utility.generateUser(name, lastName, this.getUsernames());
         if(this.username.equals(" ")) return false;
         email = this.utility.generateEmail(username);
+
+        password = this.utility.genNewPassword(this.getAllpasswords());
+
         if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(password)
         || !this.utility.validateRole(role)) return false;
 
@@ -164,6 +169,16 @@ public class AccountController {
         }
         accountsInfo += "}";
         return accountsInfo;
+    }
+
+    private String[] getAllpasswords(){
+        String[] passwords = new String[this.accounts.size()];
+        ArrayList<Account> listAccount = new ArrayList<>(this.accounts);
+        for (int i = 0; i < passwords.length; i++){
+            passwords[i] = listAccount.get(i).getPassword();
+        }
+
+        return passwords;
     }
 
 

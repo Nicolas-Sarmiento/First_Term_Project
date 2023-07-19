@@ -42,7 +42,7 @@ public class LoginView {
                     role=sc.nextLine();
                     System.out.println("\tType your password (with a capital letter, a lower case letter, at least 6 and 15 in length)");
                     password=sc.nextLine();
-                    if(loginController.signin(names,lastNames,id,password,role)){
+                    if(loginController.signin(names,lastNames,id,role)){
                         System.out.println("you successfully registered\n" +
                                 "your user name is: "+loginController.getUserName());
                     }else {
