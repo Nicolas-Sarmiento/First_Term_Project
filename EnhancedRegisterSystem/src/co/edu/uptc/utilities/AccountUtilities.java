@@ -2,6 +2,10 @@ package co.edu.uptc.utilities;
 
 import co.edu.uptc.controller.Roles;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+
 /**
  * @author:EdwinMartinez
  * {@code @version:14/07/2023}
@@ -157,4 +161,39 @@ public class AccountUtilities{
         if (cleanName.startsWith(" ")) return cleanName.replaceFirst(" ", "");
         return cleanName;
     }
+
+    /**
+     * Genera contraseñas aleatorias que no se repiten
+     * Debido a que compara un arreglo de contraseñas existentes
+     * @param passwords contraseñas existentes
+     * @return String, una contraseña única
+     */
+    public String genNewPassword(String[] passwords){
+        String password = "";
+        HashSet<String> listPasswords = new HashSet<>(Arrays.asList(passwords));
+        do {
+            password = this.randomPassword();
+            if (!listPasswords.contains(password)) break;
+        }while (true);
+        return password;
+    }
+
+    /**
+     * Genera contraseñas aleatorias de 6 caracteres
+     * 2 numeros, 2 Mayúsculas y 2 minúsculas
+     * @return Contraseña aleatoria de 6 caracteres
+     */
+    private String randomPassword(){
+        Random rand = new Random();
+        String password = "";
+        password += rand.nextInt(10) + "" + rand.nextInt(10) +
+                (char)(rand.nextInt(25) + 65) +
+                (char)(rand.nextInt(25) + 65) +
+                (char)(rand.nextInt(25) + 65) +
+                (char)(rand.nextInt(25) + 97) +
+                (char)(rand.nextInt(25) + 97);
+        return password;
+    }
+
+
 }//cierre clase
