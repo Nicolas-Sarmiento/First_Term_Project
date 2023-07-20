@@ -1,7 +1,9 @@
 package co.edu.uptc.controller;
 import co.edu.uptc.model.Account;
 import co.edu.uptc.controller.AccountController;
-  /**
+
+
+/**
      * La clase loginController se encargar de verificar
      * los datos ingresados, valida y guarda el usuario
      * en el atributo loggedAcount
@@ -12,6 +14,7 @@ import co.edu.uptc.controller.AccountController;
  */
 public class LoginController {
     Account loggedAcount;
+
     AccountController acc;
   
     public LoginController(){
