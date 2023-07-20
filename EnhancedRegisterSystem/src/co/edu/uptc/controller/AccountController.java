@@ -20,6 +20,7 @@ public class AccountController {
     private HashSet<Account> accounts;
     private AccountUtilities utility;
     private String username = "";
+    private String password = "";
     private final Account[] defaultAccounts = {
         new Account("202210568", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
         new Account("2021456","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
@@ -50,7 +51,6 @@ public class AccountController {
      */
     public boolean addAccount(String id, String name, String lastName, String role){
         String email = "";
-        String password = "";
 
         id = id.toLowerCase();
         name = this.utility.cleanNames(name);
@@ -60,9 +60,9 @@ public class AccountController {
         if(this.username.equals(" ")) return false;
         email = this.utility.generateEmail(username);
 
-        password = this.utility.genNewPassword(this.getAllpasswords());
+        this.password = this.utility.genNewPassword(this.getAllpasswords());
 
-        if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(password)
+        if (!this.utility.validateId(id) || !this.utility.validateName(name) || !this.utility.validateName(lastName) || !this.utility.validatePassword(this.password)
         || !this.utility.validateRole(role)) return false;
 
         Account newAccount = new Account(id, username, password, role, email);
@@ -79,6 +79,14 @@ public class AccountController {
      */
     public String getUsername(){
         return this.username;
+    }
+
+    /**
+     * getPassword returns the generate password
+     * @return String with password
+     */
+    public String getPassword(){
+        return this.password;
     }
     /**
      * findAccount allows you to search for an account based on username and password

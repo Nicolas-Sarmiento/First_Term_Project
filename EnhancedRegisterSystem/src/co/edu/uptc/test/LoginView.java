@@ -31,7 +31,7 @@ public class LoginView {
         int decision;
         String message = """
                 =============================
-                |\t\tUPTC\t\t|
+                |\t\t\tUPTC\t\t\t|
                 |\t\t1.Login\t\t\t\t|
                 |\t\t2.Exit\t\t\t\t|
                 =============================""";
@@ -93,7 +93,7 @@ public class LoginView {
             switch (decision){
                 case 1 :
                     System.out.println(this.singInAccounts() ?  "you successfully registered\n" +
-                            "your user name is: "+loginController.getUserName(): "Error with your data");
+                            "your user name is: "+loginController.getUserName()+"\n your password is: "+loginController.getPassword(): "Error with your data");
                 break;
                 case 2:
                     System.out.println(loginController.showAccounts());

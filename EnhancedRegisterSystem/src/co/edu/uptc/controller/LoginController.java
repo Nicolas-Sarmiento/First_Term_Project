@@ -102,7 +102,13 @@ public class LoginController {
     public String getUserName(){
         return acc.getUsername();
     }
-    
+    /**
+     * getPassword returns the generate password
+     * @return String with password
+     */
+    public String getPassword(){
+        return acc.getPassword();
+    }
     /**
      * Method to view the information of the account that is logged in
      * @return String with all the account information.
