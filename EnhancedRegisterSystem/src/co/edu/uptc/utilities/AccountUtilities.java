@@ -19,10 +19,8 @@ public class AccountUtilities{
      * @return si el valida o no para ser una contraseña segura
      */
     public boolean validatePassword(String password){
-        String UpperPassword=password.toUpperCase();
         boolean flagUpper=false;
         boolean flagLower=false;
-        String lowerPassword=password.toLowerCase();
         int count=0;
         //Cantidad de números en la contaseña
         for(int i=0;i<password.length();i++){
@@ -43,24 +41,11 @@ public class AccountUtilities{
             }
         }
         //verificacion que contenga los tres parametros para ser segura
-        if(flagUpper && flagLower && count>2 && password.length()>=6 && password.length()<=15){
+        if(flagUpper && flagLower && count>=2 && password.length()>=6 && password.length()<=15){
             return true;
         }
         return false;
     }//Cierre método
-
-    /**
-     * Método que compara la contraseña ingresada con la registrada
-     * @param password contraseña registrada
-     * @param paswordInput contraseña ingresada
-     * @return si son iguales
-     */
-    public boolean comparatePasswords(String password, String paswordInput){
-        if(password.equals(paswordInput)){
-            return true;
-        }
-        return false;
-    }//cierre Método
 
     /**
      * Método para validar que el nombre que ingreso no este vacio
