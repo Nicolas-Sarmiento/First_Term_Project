@@ -1,7 +1,7 @@
 package co.edu.uptc.controller;
 
 /**
- * enumerado con los role disponibles en el login
+ * enumerator with the roles available in the login
  * @author Edwin Martinez
  */
 public enum Roles {

@@ -5,8 +5,8 @@ import co.edu.uptc.controller.LoginController;
 import co.edu.uptc.utilities.InputLibrary;
 
 /**
- * Esta clase es para mostrar el menu con sus funciones
- * para que se pueda intancias sin tener que hacer cambios en la logica
+ * This class is to show the menu with its functions so
+ * that it can be instantiated without having to make changes in the logic.
  * @author Edwin Martinez
  * @author Samuel Gonzalez
  */
@@ -24,7 +24,7 @@ public class LoginView {
         this.errorMessage = "Invalid input. Try again";
     }
     /**
-     *Este el metodo principal que muestra el menu
+     *This is the main method that shows the menu
      */
     public static void main(String[] args) {
         LoginView portal = new LoginView();
@@ -61,7 +61,7 @@ public class LoginView {
     }
 
     /**
-     * Este método muesta las opciones despues del login
+     * This method shows the options after login
      */
     public void login(){
         System.out.println(this.loginController.showInfoLoggedAcount());
@@ -76,7 +76,7 @@ public class LoginView {
     }
 
     /**
-     * Este método muesta la opcion para Administrador, Director, Secretaria de mostrar todas las cuentas
+     * This method shows the option for Administrator to show all accounts and register new accounts
      */
     public  void optionsGeneralsLogin(){
         String loginMessage = """
@@ -136,7 +136,7 @@ public class LoginView {
 
 
     /**
-     * Este método muestra las opciones basicas para personas que no tienen permisos especiales
+     * This method shows the basic options for people who do not have special permissions
      */
     public  void optionsBasic(){
         String message = """

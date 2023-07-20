@@ -9,10 +9,9 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * La clase Account Controller permite gestionar una
- * colección de cuentas que estaran disponibles en la
- * ejecución del programa, así como la creación, eliminación
- * y edición de contraseñas
+ * The Account Controller class allows to manage a collection of accounts
+ * that will be available in the execution of the program, as well as
+ * the creation, deletion and editing of passwords.
  * @author Nicolas Sarmiento : Nicolas-Sarmiento
  * @version  1.0.0
  */
@@ -41,14 +40,13 @@ public class AccountController {
     }
 
     /**
-     * El método AddAccount permite la creación y adición de
-     * una cuenta a la colección de cuentas, validando los paramétros
-     * de entrada
-     * @param id código miembro de la institución
-     * @param name Nombres del miembro de la institución
-     * @param lastName Apeellidos del miembro de la institución
-     * @param role Rol que tiene el miembro en la institución
-     * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
+     * The AddAccount method allows the creation and addition
+     * of an account to the collection of accounts, validating the input parameters.
+     * @param id institution member code
+     * @param name Institution member names
+     * @param lastName Last name of the member of the institution
+     * @param role Role of the member in the institution
+     * @return true if the account was added successfully, false if it already exists or the parameters are invalid
      */
     public boolean addAccount(String id, String name, String lastName, String role){
         String email = "";
@@ -76,18 +74,17 @@ public class AccountController {
     }
 
     /**
-     * getUserName devuelve el usuario generado
-     * @return String con el usuario generado
+     * getUserName returns the generated user
+     * @return String with generated user
      */
     public String getUsername(){
         return this.username;
     }
     /**
-     * findAccount permite la busqueda de una cuenta a partir de
-     * usuario y contraseña
+     * findAccount allows you to search for an account based on username and password
      * @param username
      * @param password
-     * @return Objeto de tipo Account, dicho objeto será nulo, si no es encontrado en la colección
+     * @return Object of type Account, said object will be null, if it is not found in the collection
      */
     public Account findAccount(String username, String password){
         for (Account acc : this.accounts){
@@ -97,11 +94,10 @@ public class AccountController {
     }
 
     /**
-     * Permite remover una cuenta de la colecciona a partir de
-     * usuario y contraseña
+     * Allows you to remove an account from the collection based on username and password
      * @param username
      * @param password
-     * @return true si la cuenta se eliminó, false si no se eliminó o no fue encontrada
+     * @return true if the account was deleted, false if it was not deleted or not found
      */
     public boolean removeAccount(String username, String password){
         Account accountToRemove = this.findAccount(username, password);
@@ -112,12 +108,11 @@ public class AccountController {
     }
 
     /**
-     * Permite el cambio de contraseña de una cuenta a partir
-     * de usuario y contraseña
-     * @param username usuario de la cuenta a cambiar contraseña
-     * @param password contraseña antigua
-     * @param newPassword contraseña nueva
-     * @return true si el cambio fue satisfactorio, false si no se encontró la cuenta o la nueva contraseña es inválida
+     * Allows changing an account password from username and password
+     * @param username account user to change password
+     * @param password old password
+     * @param newPassword new password
+     * @return true if the change was successful, false if the account was not found or the new password is invalid
      */
     public boolean setNewPassword(String username, String password, String newPassword){
         Account accountSetPassword = this.findAccount(username, password);
@@ -136,20 +131,19 @@ public class AccountController {
         return false;
     }
     /**
-     * Pequeña utilidad que se utiliza en el cambio de contraseña,
-     * debido a que se requiere crear un nuevo objeto para que se genere
-     * un nuevo código hash en la colección
-     * @param account cuenta a ser clonada
-     * @return Account object con los atributos de la cuenta ingresada
+     * Small utility that is used in changing the password,
+     * because it requires creating a new object so that a new hash code
+     * is generated in the collection
+     * @param account account to be cloned
+     * @return Account object with the attributes of the entered account
      */
     private Account cloneAccount(Account account){
         return new Account(account.getId(), account.getUserName(), account.getPassword(), account.getRole(), account.getEmail());
     }
 
     /**
-     * Retorna los usuarios en un arreglo, este método se utiliza para
-     * la generación de usuarios
-     * @return String[] retorna todos los usuarios de la colección de cuentas
+     * Returns the users in an array, this method is used for user generation
+     * @return String[] returns all users in the account collection
      * @Author  Nicolas Sarmiento : Nicolas-Sarmiento
      */
     public String[] getUsernames(){

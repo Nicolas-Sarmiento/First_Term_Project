@@ -14,22 +14,22 @@ public class AccountUtilities{
     public AccountUtilities() {
     }
     /**
-     *Método que devuelve si la contraseña cumple con los requisitos minimos para ser segura
-     * @param password es el parametro a comparar
-     * @return si el valida o no para ser una contraseña segura
+     * Method that returns whether the password meets the minimum requirements to be secure
+     * @param password is the parameter to compare
+     * @return whether or not he validates to be a secure password
      */
     public boolean validatePassword(String password){
         boolean flagUpper=false;
         boolean flagLower=false;
         int count=0;
-        //Cantidad de números en la contaseña
+        //Number of numbers in the password
         for(int i=0;i<password.length();i++){
             Character character=password.charAt(i);
             if(character.isDigit(character)){
                 count++;
             }
         }
-        //Mayusculas y minusculas en la contraseña
+        //Password case
         for (int i = 0; i < password.length(); i++) {
             char character = password.charAt(i);
             if (Character.isLetter(character)) {
@@ -40,29 +40,28 @@ public class AccountUtilities{
                 }
             }
         }
-        //verificacion que contenga los tres parametros para ser segura
+        //check containing all three parameters to be safe
         if(flagUpper && flagLower && count>=2 && password.length()>=6 && password.length()<=15){
             return true;
         }
         return false;
-    }//Cierre método
+    }
 
     /**
-     * Método para validar que el nombre que ingreso no este vacio
-     * @param name nombre a verificar
-     * @return retorna si esta o no vacio
+     * Method to validate that the name entered is not empty
+     * @param name name to verify
+     * @return returns whether or not it is empty
      */
     public boolean validateName(String name){
         if(name!=null&&name!=" "){
             return true;
         }
         return false;
-    }//Cierre Método
-
+    }
     /**
-     * Método para verificar que el metodo ingresado exista en los definidos en el login
-     * @param roles rol a comparar
-     * @return retorna si el rol el valido
+     * Method to verify that the method entered exists in those defined in the login
+     * @param roles role to compare
+     * @return returns if the role is valid
      */
     public boolean validateRole(String roles){
         for (Roles s:Roles.values()) {
@@ -71,35 +70,34 @@ public class AccountUtilities{
             }
         }
         return false;
-    }//cierre método
+    }
 
     /**
-     * Método que verifica que la identificación ingresada no este vacia
-     * @param id identificación a comparar
-     * @return retorna si esta o no vacio
+     * Method that verifies that the id entered is not empty
+     * @param id identification to compare
+     * @return returns whether or not it is empty
      */
     public boolean validateId(String id){
         if(id!=null&&id!=" "){
             return true;
         }
         return false;
-    }//cierre método
-
+    }
     /**
-     * Método para generar el correo de la persona que se registra
-     * @param user es el nombre de usuario
-     * @return retorna el correo con la extension de la universidad
+     * Method to generate the email of the person who registers
+     * @param user is the username
+     * @return return the email with the extension of the university
      */
     public String generateEmail(String user){
         return user+"@uptc.edu.co";
     }//cierre método
 
     /**
-     * Método para generar el usuario de la persona añadiendo un numero si esta repetido
-     * @param names son los nombres del usuario
-     * @param lastNames apellidos del usuario
-     * @param userNames la lista de usuarios registrados para comparar
-     * @return retorna el usuario con un numero si ya existe un usuario parecido
+     * Method to generate the user of the person adding a number if it is repeated
+     * @param names are the usernames
+     * @param lastNames user's last name
+     * @param userNames the list of registered users to compare
+     * @return returns the user with a number if a similar user already exists
      */
     public String generateUser(String names,String lastNames,String[] userNames){
         try {
@@ -125,21 +123,19 @@ public class AccountUtilities{
         }catch (ArrayIndexOutOfBoundsException e){
             return " ";
         }
-    }//cierre método
-
+    }
     /**
-     * Método para eliminar los número y caracteres especiales de los usuarios
-     * @param userName es el nombre de usuario a eliminar números y caracteres especiales
-     * @return retorna un nombre de usuario sin números y caracteres especiales
+     * Method to eliminate the numbers and special characters of the users
+     * @param userName is the username to remove numbers and special characters
+     * @return returns a username without numbers and special characters
      */
     public String removeDigits(String userName){
         return userName.replaceAll("[^a-z]","");
-    }//cierre método
-
+    }
     /**
-     * Método para ponerlo en minuscula y eliminar espacios innecesarios
+     * Method to put it in lower case and eliminate unnecessary spaces
      * @param name
-     * @return nombre sin espacios y en minuscula
+     * @return name without spaces and in lowercase
      */
     public String cleanNames(String name){
         String cleanName =  name.toLowerCase();
@@ -148,10 +144,9 @@ public class AccountUtilities{
     }
 
     /**
-     * Genera contraseñas aleatorias que no se repiten
-     * Debido a que compara un arreglo de contraseñas existentes
-     * @param passwords contraseñas existentes
-     * @return String, una contraseña única
+     * Generates random, non-repeating passwords Because it compares an array of existing passwords
+     * @param passwords existing passwords
+     * @return String, a unique password
      */
     public String genNewPassword(String[] passwords){
         String password = "";
@@ -162,11 +157,9 @@ public class AccountUtilities{
         }while (true);
         return password;
     }
-
     /**
-     * Genera contraseñas aleatorias de 6 caracteres
-     * 2 numeros, 2 Mayúsculas y 2 minúsculas
-     * @return Contraseña aleatoria de 6 caracteres
+     * Generate random 6 character passwords 2 numbers, 2 uppercase and 2 lowercase
+     * @return 6 character random password
      */
     private String randomPassword(){
         Random rand = new Random();
@@ -179,6 +172,4 @@ public class AccountUtilities{
                 (char)(rand.nextInt(25) + 97);
         return password;
     }
-
-
-}//cierre clase
+}

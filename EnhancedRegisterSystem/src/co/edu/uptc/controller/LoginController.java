@@ -5,10 +5,9 @@ import co.edu.uptc.model.Person;
 
 
 /**
-     * La clase loginController se encargar de verificar
-     * los datos ingresados, valida y guarda el usuario
-     * en el atributo loggedAcount
-     * 
+     * The loginController class is responsible for
+     * verifying the data entered, validates and saves
+     * the user in the loggedAcount attribute
      * @author Samuel Gonzalez Zambrano
      * @version  1.0.0
      * 
@@ -24,12 +23,11 @@ public class LoginController {
         this.acc.loadAccounts();
     }
     /**
-     * Metodo principal, verifica el nombre y contra
-      * si coincide con algun usuario lo trae y lo guarda
-     * en loggedAcount
-     * @param nameUser,password ambos ingresados por usuario
-     * @return Si las credeciales ingresadas son validas 
-     * guarda el usuario y retorona true.
+     * Main method, check the name and count if it matches
+     * any user, it brings it and saves it in loggedAcount
+     * @param nameUser,password both entered by user
+     * @return If the credentials entered are valid,
+     * save the user and return true.
     * 
  */
     public  boolean login(String nameUser, String password){
@@ -44,13 +42,12 @@ public class LoginController {
         return false;
     }
     /**
-     * Permite al usuario que ingreso cambiar su contraseña,
-     * solo lo permite si ya inicio sesion.
-     * Se debe ingresar la primera contraseña y luego ahi si procede al cambio
-     * si  introduce mal la contraseña original, el cambio se cancela
-     * @param oldpassword,newpassword ambos ingresados por usuario
-     * @return Si las credeciales ingresadas son validas 
-     * cambia la contraseña.
+     * Allows the user who entered to change their password, only allows
+     * it if they are already logged in. You must enter the first password
+     * and then there if you proceed to the change if you enter the original
+     * password wrong, the change is canceled
+     * @param oldpassword,newpassword both entered by user
+     * @return If the credentials entered are valid, change the password.
     * 
  */
 
@@ -70,8 +67,8 @@ public class LoginController {
     }
 
     /**
-     * Cierra sesion, por ende el atributro loggedAcount se hace null
-     * @return booleano.
+     * Log out, therefore the loggedAcount attribute becomes null
+     * @return boolean.
     * 
  */
 
@@ -85,12 +82,12 @@ public class LoginController {
     }
 
     /**
-     * Registro de usuario, requiere de todos los elementos base
-     * luego son validados, crea las personas
-     * @param name,lastname nombre compelto del usuario
-     * @param id docuemnto del usuario
-     * @param role Especificacion del rol del usuario a crear
-     * @return boolean de control, si algo falla se cancela el proceso .
+     * User registration, requires all the base elements,
+     * then they are validated, creates the people
+     * @param name,lastname user's full name
+     * @param id user document
+     * @param role Specify the role of the user to create
+     * @return control boolean, if something fails the process is canceled.
     * 
  */
 
@@ -99,16 +96,16 @@ public class LoginController {
         return acc.addAccount(id, person.getName(), person.getLastname(), role);
     }
       /**
-       * getUserName devuelve el usuario generado
-       * @return String con el usuario generado
+       * getUserName returns the generated user
+       * @return String with generated user
        */
     public String getUserName(){
         return acc.getUsername();
     }
     
     /**
-     *Metodo para ver la informacion de la cuenta que inicio sesion
-     * @return String con toda la informacion de la cuenta.
+     * Method to view the information of the account that is logged in
+     * @return String with all the account information.
     * 
  */
 
@@ -120,8 +117,8 @@ public class LoginController {
     }
     
     /**
-     *Metodo para ver Rol de la persona que inicie sesion
-     * @return String el rol de la cuenta.
+     *Method to view Role of person logging on
+     * @return String the role of the account.
     * 
     */
 
@@ -133,8 +130,8 @@ public class LoginController {
     }
 
       /**
-       * Este método muestra todas las cuentas existentes hasta el momento
-       * @return un String con todas la cuentas
+       * This method displays all existing accounts so far
+       * @return a String with all the accounts
        */
 
     public String showAccounts(){
@@ -142,7 +139,7 @@ public class LoginController {
     }
 
      /**
-     *Metodo para  precargar estudaintes, funciona para testear
+     *Method to preload students, it works for testing
     */
     public void loadAccounts(){
         acc.loadAccounts();

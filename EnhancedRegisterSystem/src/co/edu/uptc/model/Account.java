@@ -1,13 +1,13 @@
 package co.edu.uptc.model;
 
 import java.util.Objects;
-/*
-    La clase Account comprende los atributos que conforma una cuenta
-    de la uptc, maneja los atributos de nombre, código, usuario, contraseña, rol en la universida
-    y correo institucional
-    @author Nicolas Sarmiento vargas : Nicolas-Sarmiento
-    @version 1.0.0
-*/
+
+/**
+ *  The Account class includes the attributes that make up an uptc account, it manages
+ *  the attributes of code, user, password, role in the university and institutional mail
+ *  @author Nicolas Sarmiento vargas : Nicolas-Sarmiento
+ *  @version 1.0.0
+ */
 
 public class Account {
 
