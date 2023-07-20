@@ -38,9 +38,7 @@ public class LoginView {
         String password = "",userName = "";
         do {
             System.out.println(message);
-            System.out.print("Selection -------->");
-
-            decision = portal.util.inputInt("", "Invalid input. Try again");
+            decision = portal.util.inputInt("Selection -------->", "Invalid input. Try again");
             switch (decision) {
                 case 1 :
                     userName = portal.util.inputString("\tUsername", "Invalid Input. Try again");
