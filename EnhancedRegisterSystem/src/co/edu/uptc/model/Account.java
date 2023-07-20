@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  *  The Account class includes the attributes that make up an uptc account, it manages
  *  the attributes of code, user, password, role in the university and institutional mail
- *  @author Nicolas Sarmiento vargas : Nicolas-Sarmiento
+ *  @author Nicolas Sarmiento vargas
  *  @version 1.0.0
  */
 
@@ -17,6 +17,16 @@ public class Account {
     private String role;
     private String email;
 
+    /**
+     * This constructor creates a completely Account object
+     * with all properties
+     * @param id
+     * @param userName
+     * @param password
+     * @param role
+     * @param email
+     */
+
     public Account(String id, String userName, String password, String role, String email) {
         this.id=id;
         this.userName = userName;
@@ -25,6 +35,9 @@ public class Account {
         this.email = email;
     }
 
+    /**
+     * Empty Constructor
+     */
     public Account(){}
 
    
@@ -69,15 +82,21 @@ public class Account {
         this.email = email;
     }
 
-    /*
-    Los métodos equals y hashcode se sobreescribieron para poder utilizar un
-    HashSet como controlador de la clase Account
+    /**
+     * HashCode was override to use in Account Controller
+     * Method
+     * @return a hash code from the properties
      */
     @Override
     public int hashCode() {
         return Objects.hash(id, password, role);
     }
 
+    /**
+     * Equals method was override to use in Account Controller HashSet
+     * @param obj An object
+     * @return true if obj is an instance of Account and it has the same properties false if obj isn't a instance of Account or its properties are different
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
