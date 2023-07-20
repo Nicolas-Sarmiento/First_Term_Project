@@ -1,5 +1,10 @@
 package co.edu.uptc.model;
 
+/**
+ * Person Class is for manage and simulate a person
+ * @Author Edwin Martinez
+ * @Author Samuel Gonzalez Zambrano
+ */
 public class Person {
     private String name;
     private String lastname;
