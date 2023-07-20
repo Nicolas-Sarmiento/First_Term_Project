@@ -47,7 +47,6 @@ public class AccountController {
      * @param id código miembro de la institución
      * @param name Nombres del miembro de la institución
      * @param lastName Apeellidos del miembro de la institución
-     * @param password Contraseña de la cuenta
      * @param role Rol que tiene el miembro en la institución
      * @return true si la cuenta fue añadida satisfactoriamente, false si ya existe o los parámetros son inválidos
      */

@@ -18,7 +18,7 @@ public class Account {
     private String email;
 
     public Account(String id, String userName, String password, String role, String email) {
-
+        this.id=id;
         this.userName = userName;
         this.password = password;
         this.role = role;

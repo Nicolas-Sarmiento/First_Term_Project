@@ -1,6 +1,7 @@
 package co.edu.uptc.controller;
 import co.edu.uptc.model.Account;
 import co.edu.uptc.controller.AccountController;
+import co.edu.uptc.model.Person;
 
 
 /**
@@ -16,7 +17,7 @@ public class LoginController {
     Account loggedAcount;
 
     AccountController acc;
-  
+    private Person person;
     public LoginController(){
         this.loggedAcount = new Account();
         this.acc = new AccountController();
@@ -85,17 +86,17 @@ public class LoginController {
 
     /**
      * Registro de usuario, requiere de todos los elementos base
-     * luego son validados
+     * luego son validados, crea las personas
      * @param name,lastname nombre compelto del usuario
      * @param id docuemnto del usuario
-     * @param password contraseña ingresada por el usuario
      * @param role Especificacion del rol del usuario a crear
      * @return boolean de control, si algo falla se cancela el proceso .
     * 
  */
 
     public boolean signin(String name, String lastName, String id, String role){
-        return acc.addAccount(id, name, lastName, role);
+        person=new Person(name,lastName);
+        return acc.addAccount(id, person.getName(), person.getLastname(), role);
     }
       /**
        * getUserName devuelve el usuario generado
