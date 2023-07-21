@@ -92,8 +92,8 @@ public class LoginController {
  */
 
     public boolean signin(String name, String lastName, String id, String role){
-        person=new Person(name,lastName);
-        return acc.addAccount(id, person.getName(), person.getLastname(), role);
+        person=new Person(id,name,lastName);
+        return acc.addAccount(person.getId(), person.getName(), person.getLastname(), role);
     }
       /**
        * getUserName returns the generated user
