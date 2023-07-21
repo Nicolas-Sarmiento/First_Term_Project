@@ -7,8 +7,9 @@ import co.edu.uptc.utilities.InputLibrary;
 /**
  * This class is to show the menu with its functions so
  * that it can be instantiated without having to make changes in the logic.
- * @author Edwin Martinez
- * @author Samuel Gonzalez
+ * @Author Edwin Martinez
+ * @Author Samuel Gonzalez
+ * @Author Nicolas Sarmiento
  */
 public class LoginView {
 
@@ -38,11 +39,11 @@ public class LoginView {
         String password = "",userName = "";
         do {
             System.out.println(message);
-            decision = portal.util.inputInt("Selection -------->", "Invalid input. Try again");
+            decision = portal.util.inputInt("Selection --------> ", "Invalid input. Try again");
             switch (decision) {
                 case 1 :
-                    userName = portal.util.inputString("\tUsername", "Invalid Input. Try again");
-                    password = portal.util.inputString("\tPassword", "Invalid input. Try again");
+                    userName = portal.util.inputString("\tUsername: ", "Invalid Input. Try again");
+                    password = portal.util.inputString("\tPassword: ", "Invalid input. Try again");
                     if (portal.loginController.login(userName, password)) {
                         portal.login();
                     } else {
@@ -87,7 +88,7 @@ public class LoginView {
         int decision,role;
         do{
             System.out.println(loginMessage);
-            decision = this.util.inputInt("Selection ----->", this.errorMessage);
+            decision = this.util.inputInt("Selection -----> ", this.errorMessage);
             switch (decision){
                 case 1 :
                     System.out.println(this.singInAccounts() ?  "you successfully registered\n" +
@@ -113,18 +114,18 @@ public class LoginView {
         String names = "", lastNames = "", id = "";
         int roleIndex = 0;
 
-        roleIndex = this.util.inputInt("\tType your role in the university\n\t1.Student\n\t2.Professor\n\t3.Secretary", errorMessage, 1,3);
-        names = this.util.inputString("\tType their names", this.errorMessage);
-        lastNames = this.util.inputString("\tType your last name", errorMessage);
-        id = this.util.inputString("\tType your identification", errorMessage);
+        roleIndex = this.util.inputInt("\tType your role in the university\n\t1.Student\n\t2.Professor\n\t3.Secretary\n\t-> ", errorMessage, 1,3);
+        names = this.util.inputString("\tType their names: ", this.errorMessage);
+        lastNames = this.util.inputString("\tType your last name: ", errorMessage);
+        id = this.util.inputString("\tType your identification: ", errorMessage);
 
         return loginController.signin(names,lastNames,id,this.roles[roleIndex-1]);
     }
 
     public boolean changePassword(){
         String oldPassword = "", newPassword = "";
-        oldPassword = this.util.inputString("\tType old password", errorMessage);
-        newPassword = this.util.inputString("\tType new password. Your password will include 2 Uppercase characters, 2 Lowercase characters, 2 numbers. At least 6 characters.", errorMessage);
+        oldPassword = this.util.inputString("\tType old password: ", errorMessage);
+        newPassword = this.util.inputString("\t Your password will include 2 Uppercase characters, 2 Lowercase characters, 2 numbers. At least 6 characters.\n\tType new password: ", errorMessage);
         return this.loginController.changePassword(oldPassword, newPassword);
     }
 
@@ -146,7 +147,7 @@ public class LoginView {
         int decision = 0;
         do{
             System.out.println(message);
-            decision = this.util.inputInt("Selection ----->", this.errorMessage);
+            decision = this.util.inputInt("Selection -----> ", this.errorMessage);
             switch (decision){
                 case 1:
                     System.out.println(this.changePassword() ? "password change was successful": "Error");
