@@ -13,6 +13,7 @@ import co.edu.uptc.model.Person;
      * 
  */
 public class LoginController {
+
     Account loggedAcount;
 
     AccountController acc;

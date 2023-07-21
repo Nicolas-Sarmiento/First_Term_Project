@@ -4,7 +4,7 @@ import co.edu.uptc.model.Account;
 import co.edu.uptc.model.Person;
 import co.edu.uptc.model.persontypes.Administrator;
 import co.edu.uptc.model.persontypes.Professor;
-import co.edu.uptc.model.persontypes.Secretay;
+import co.edu.uptc.model.persontypes.Secretary;
 import co.edu.uptc.model.persontypes.Student;
 
 import java.util.HashSet;
@@ -71,7 +71,7 @@ public class PersonController {
                 newPerson = new Administrator(id, name, lastName);
                 break;
             case SECRETARY:
-                newPerson = new Secretay(id, name, lastName);
+                newPerson = new Secretary(id, name, lastName);
                 break;
         }
 
