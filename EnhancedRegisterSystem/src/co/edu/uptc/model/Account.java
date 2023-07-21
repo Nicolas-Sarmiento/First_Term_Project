@@ -1,59 +1,46 @@
 package co.edu.uptc.model;
 
 import java.util.Objects;
-/*
-    La clase Account comprende los atributos que conforma una cuenta
-    de la uptc, maneja los atributos de nombre, código, usuario, contraseña, rol en la universida
-    y correo institucional
-    @author Nicolas Sarmiento vargas : Nicolas-Sarmiento
-    @version 1.0.0
-*/
+
+/**
+ *  The Account class includes the attributes that make up an uptc account, it manages
+ *  the attributes of code, user, password, role in the university and institutional mail
+ *  @author Nicolas Sarmiento vargas
+ *  @version 1.0.0
+ */
 
 public class Account {
 
     private String id;
-    private String name;
-    private String lastname;
     private String userName;
     private String password;
     private String role;
     private String email;
 
-    public Account(String id, String name, String lastname, String userName, String password, String role, String email) {
-        this.id = id;
-        this.name = name;
-        this.lastname = lastname;
+    /**
+     * This constructor creates a completely Account object
+     * with all properties
+     * @param id
+     * @param userName
+     * @param password
+     * @param role
+     * @param email
+     */
+
+    public Account(String id, String userName, String password, String role, String email) {
+        this.id=id;
         this.userName = userName;
         this.password = password;
         this.role = role;
         this.email = email;
     }
 
+    /**
+     * Empty Constructor
+     */
     public Account(){}
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+   
 
     public String getUserName() {
         return userName;
@@ -61,6 +48,14 @@ public class Account {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPassword() {
@@ -87,15 +82,21 @@ public class Account {
         this.email = email;
     }
 
-    /*
-    Los métodos equals y hashcode se sobreescribieron para poder utilizar un
-    HashSet como controlador de la clase Account
+    /**
+     * HashCode was override to use in Account Controller
+     * Method
+     * @return a hash code from the properties
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastname, password, role);
+        return Objects.hash(id, password, role);
     }
 
+    /**
+     * Equals method was override to use in Account Controller HashSet
+     * @param obj An object
+     * @return true if obj is an instance of Account and it has the same properties false if obj isn't a instance of Account or its properties are different
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -103,20 +104,15 @@ public class Account {
 
         Account objAccount = (Account) obj;
 
-        return this.id.equals(objAccount.getId()) && this.name.equals(objAccount.getName()) &&
-                this.lastname.equals(objAccount.getLastname())  && this.password.equals(objAccount.getPassword()) &&
+        return this.id.equals(objAccount.getId()) && this.password.equals(objAccount.getPassword()) &&
                 this.role.equals(objAccount.getRole());
     }
 
     @Override
     public String toString() {
-        return "Account{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", userName='" + userName + '\'' +
-                ", role='" + role + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Account [id= " + id + ", userName= " + userName +  ", role= " + role + ", email= "
+                + email + "]";
     }
+
+    
 }
