@@ -110,10 +110,9 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-                ", userName='" + userName + '\'' +
-                ", role='" + role + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Account [id= " + id + ", userName= " + userName +  ", role= " + role + ", email= "
+                + email + "]";
     }
+
+    
 }
