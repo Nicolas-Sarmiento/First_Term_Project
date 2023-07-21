@@ -12,7 +12,7 @@ The collaborators are:
 ## USAGE
 To use the login, you can instance a LoginView Object. To understand the login, you can read the documentation. Please, read it :)
 
-[Documentation](./JavaDoc/index.html)
+[Documentation]( https://nicolas-sarmiento.github.io/First_Term_Project/)
 
 
 <img src = "https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" alt = "java-logo" height = "50px">
