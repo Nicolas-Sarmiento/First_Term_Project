@@ -65,5 +65,14 @@ public class Person {
     public int hashCode() {
         return Objects.hash(id, name, lastname);
     }
+
+    public String toString(){
+
+        return "Name: " + this.getName() + " Last Name: " + this.getLastname() + " Id: " + this.getId() + " Data Acount: " + account.toString();
+
+    }
+
+
+
 }
 

@@ -16,10 +16,11 @@ public class LoginController {
     Account loggedAcount;
 
     AccountController acc;
-    private Person person;
+    private PersonController personControler;
     public LoginController(){
         this.loggedAcount = new Account();
         this.acc = new AccountController();
+        this.personControler = new PersonController();
         this.acc.loadAccounts();
     }
     /**
@@ -92,8 +93,18 @@ public class LoginController {
  */
 
     public boolean signin(String name, String lastName, String id, String role){
-        person=new Person(id,name,lastName);
-        return acc.addAccount(person.getId(), person.getName(), person.getLastname(), role);
+       
+       if(personControler.addPerson(id, name, lastName, role)){
+            Person person = personControler.findPersonById(id);
+            if (acc.addAccount(person.getId(), person.getName(), person.getLastname(), role)) {
+                personControler.assingAccount(person.getId(), acc.findAccount(acc.getUsername(), acc.getPassword()));
+                return true;
+            }
+            
+          
+
+       }
+        return false;
     }
       /**
        * getUserName returns the generated user

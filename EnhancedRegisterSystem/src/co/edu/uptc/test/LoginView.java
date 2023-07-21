@@ -31,7 +31,7 @@ public class LoginView {
         LoginView portal = new LoginView();
         int decision;
         String message = """
-                =============================
+                ============================= 
                 |\t\t\tUPTC\t\t\t|
                 |\t\t1.Login\t\t\t\t|
                 |\t\t2.Exit\t\t\t\t|
