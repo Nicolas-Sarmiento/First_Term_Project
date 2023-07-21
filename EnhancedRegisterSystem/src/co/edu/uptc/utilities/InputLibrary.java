@@ -87,11 +87,13 @@ public class InputLibrary {
     public String inputString(String message, String errorMessage){
         boolean isCorrect = false;
         String returnValue = "";
+        String valueNoSpaces = "";
         while (!isCorrect){
             try {
                 System.out.print(message);
                 returnValue = inputLine.nextLine();
-                isCorrect = !returnValue.equals("");
+                valueNoSpaces = returnValue.replaceAll(" ", "");
+                isCorrect = !valueNoSpaces.equals("");
             }catch (Exception e){
                 System.out.println(errorMessage);
             }
