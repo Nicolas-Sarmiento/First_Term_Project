@@ -22,7 +22,18 @@ public class PersonController {
        return this.personCollection.add(newPerson);
     }
 
-    public boolean assingAccount(Account acc){
+    public boolean assingAccount(String id, Account acc){
+        Person personToAssing = this.findPersonById(id);
+        if (personToAssing == null) return false;
+        for (Person p : this.personCollection){
+            if (p.equals(personToAssing)){
+                Person tempPerson = this.clonePerson(p);
+                tempPerson.setAccount(acc);
+                this.personCollection.remove(p);
+                this.personCollection.add(tempPerson);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -40,9 +51,9 @@ public class PersonController {
         return null;
     }
 
-    public Person clonePerson(){
-
-        return null;
+    public Person clonePerson(Person p) {
+        String role = p.getClass().getSimpleName();
+        return this.createPersonByRole(p.getId(), p.getName(), p.getLastname(), role);
     }
 
     public Person createPersonByRole(String id, String name, String lastName,String role){
