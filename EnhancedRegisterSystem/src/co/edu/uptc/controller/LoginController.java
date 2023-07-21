@@ -60,6 +60,8 @@ public class LoginController {
             } else if(loggedAcount != null && loggedAcount.getPassword().equals(oldpassword)){
                 boolean methodAnswer = acc.setNewPassword(loggedAcount.getUserName(),oldpassword, newPassword );
                 loggedAcount = acc.findAccount(loggedAcount.getUserName(), newPassword);
+                Person person = personControler.findPersonById(loggedAcount.getId());
+                person.setAccount(loggedAcount);
                 return methodAnswer;
             }
         } catch (Exception e) {}
@@ -162,6 +164,9 @@ public class LoginController {
     public void loadAccounts(){
         acc.loadAccounts();
     }
+
+
+   
 
 
 }
