@@ -1,5 +1,6 @@
 package co.edu.uptc.controller;
 
+import co.edu.uptc.model.Account;
 import co.edu.uptc.model.Person;
 import co.edu.uptc.model.persontypes.Administrator;
 import co.edu.uptc.model.persontypes.Professor;
@@ -16,8 +17,37 @@ public class PersonController {
     }
 
     public boolean addPerson(String id, String name, String lastName, String role){
+       Person newPerson = this.createPersonByRole(id, name, lastName, role);
+       if (newPerson == null) return false;
+       return this.personCollection.add(newPerson);
+    }
+
+    public boolean assingAccount(Account acc){
+        return false;
+    }
+
+    public Roles getRole(String role){
+        for (Roles r: Roles.values()){
+            if (r.name().equalsIgnoreCase(role)) return r;
+        }
+        return null;
+    }
+
+    public Person findPersonById(String id){
+        for (Person person : this.personCollection){
+            if (person.getId().equals(id)) return person;
+        }
+        return null;
+    }
+
+    public Person clonePerson(){
+
+        return null;
+    }
+
+    public Person createPersonByRole(String id, String name, String lastName,String role){
         Roles typePerson = this.getRole(role);
-        if (typePerson == null) return false;
+        if (typePerson == null) return null;
         Person newPerson = null;
         switch (typePerson){
             case STUDENT :
@@ -34,13 +64,6 @@ public class PersonController {
                 break;
         }
 
-        return this.personCollection.add(newPerson);
-    }
-
-    public Roles getRole(String role){
-        for (Roles r: Roles.values()){
-            if (r.name().equalsIgnoreCase(role)) return r;
-        }
-        return null;
+        return newPerson;
     }
 }
