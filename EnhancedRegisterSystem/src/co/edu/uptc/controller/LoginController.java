@@ -20,13 +20,33 @@ public class LoginController {
     Person loggedPerson;
 
     AccountController acc;
+    private final Person[] defaultPeople = {
+            new Person("202210568","manuel","Martinez"),
+            new Person("2021456", "Maria", "Rodriguez"),
+            new Person("2020154","Juan", "Velandia"),
+            new Person("2022159", "Maria", "Rodriguez"),
+            new Person("46389778", "Johana", "Torres"),
+            new Person("10953483", "Ivan", "Mendoza"),
+            new Person("47865421", "Laura","Castillo")
+    };
+    private final Account[] defaultAccounts = {
+            new Account("202210568", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
+            new Account("2021456","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
+            new Account("2020154", "juan.velandia","njksAPO293",Roles.STUDENT.name(), "juan.velandia@uptc.edu.co"),
+            new Account("2022159", "maria.rodriguez01","HJAkjsf234",Roles.STUDENT.name(), "maria.rodriguez01@uptc.edu.co"),
+            new Account("46389778", "johana.torres","JKJfsdhf334",Roles.PROFESSOR.name(), "johana.torres@uptc.edu.co"),
+            new Account("10953483","ivan.mendoza","HJ23jkil",Roles.PROFESSOR.name(), "ivan.mendoza@uptc.edu.co"),
+            new Account("47865421","laura.castillo","jaklsBJ832",Roles.ADMINISTRATOR.name(), "laura.castillo@uptc.edu.co")
+    };
     private PersonController personControler;
     public LoginController(){
         this.loggedAcount = new Account();
         this.loggedPerson = new Person();
         this.acc = new AccountController();
         this.personControler = new PersonController();
-        this.acc.loadAccounts();
+        this.assignDefaultAccounts();
+        this.acc.loadAccounts(this.defaultAccounts);
+        this.personControler.loadPeople(this.defaultPeople);
     }
     /**
      * Main method, check the name and count if it matches
@@ -165,15 +185,11 @@ public class LoginController {
         return acc.showAccounts();
     }
 
-     /**
-     *Method to preload students, it works for testing
-    */
-    public void loadAccounts(){
-        acc.loadAccounts();
-    }
-
-
-   
+   private void assignDefaultAccounts(){
+        for (int i = 0; i < this.defaultAccounts.length; i++){
+            this.defaultPeople[i].setAccount(this.defaultAccounts[i]);
+        }
+   }
 
 
 }

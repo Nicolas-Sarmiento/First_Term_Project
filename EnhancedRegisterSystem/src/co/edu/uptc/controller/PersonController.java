@@ -4,6 +4,7 @@ import co.edu.uptc.model.Account;
 import co.edu.uptc.model.Person;
 import co.edu.uptc.model.persontypes.*;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * This class is for person management.
@@ -22,6 +23,9 @@ public class PersonController {
         this.personCollection = new HashSet<>();
     }
 
+    public void loadPeople(Person[] people){
+        this.personCollection = new HashSet<>(List.of(people));
+    }
 
     /**
      * This method creates a new Person and add to the Collection
