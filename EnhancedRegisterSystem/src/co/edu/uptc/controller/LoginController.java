@@ -7,26 +7,31 @@ import co.edu.uptc.model.Person;
 /**
      * The loginController class is responsible for
      * verifying the data entered, validates and saves
-     * the user in the loggedAcount attribute
+     * the user in the loggedAcount attribute.
+     * and the person that the account belongs
+     * on the atribute loggedPerson.
      * @author Samuel Gonzalez Zambrano
-     * @version  1.0.0
+     * @version  1.1
      * 
  */
 public class LoginController {
 
     Account loggedAcount;
+    Person loggedPerson;
 
     AccountController acc;
     private PersonController personControler;
     public LoginController(){
         this.loggedAcount = new Account();
+        this.loggedPerson = new Person();
         this.acc = new AccountController();
         this.personControler = new PersonController();
         this.acc.loadAccounts();
     }
     /**
      * Main method, check the name and count if it matches
-     * any user, it brings it and saves it in loggedAcount
+     * any user, it brings it and saves it in loggedAcount.
+     * also 
      * @param nameUser,password both entered by user
      * @return If the credentials entered are valid,
      * save the user and return true.
@@ -37,6 +42,8 @@ public class LoginController {
 
         if(acc.findAccount(nameUser, password) != null){
             loggedAcount = acc.findAccount(nameUser, password);
+            loggedPerson = personControler.findPersonById(loggedAcount.getId());
+            System.out.println(loggedPerson.getName());
             return true;
 
         }
