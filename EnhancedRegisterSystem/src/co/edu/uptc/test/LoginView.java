@@ -63,7 +63,7 @@ public class LoginView {
      * This method shows the options after login
      */
     public void login(){
-        System.out.println(this.loginController.showInfoLoggedAcount());
+        System.out.println("Welcome :) " + this.loginController.getName());
         String role = loginController.showRol();
 
         if (role.equals("ADMINISTRATOR")) {

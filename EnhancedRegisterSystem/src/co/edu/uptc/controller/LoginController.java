@@ -63,7 +63,6 @@ public class LoginController {
         if(acc.findAccount(nameUser, password) != null){
             loggedAcount = acc.findAccount(nameUser, password);
             loggedPerson = personControler.findPersonById(loggedAcount.getId());
-            System.out.println(loggedPerson.getName());
             return true;
 
         }
@@ -149,6 +148,10 @@ public class LoginController {
      */
     public String getPassword(){
         return acc.getPassword();
+    }
+
+    public String getName(){
+        return this.loggedPerson.getName() + " " + this.loggedPerson.getLastname();
     }
     /**
      * Method to view the information of the account that is logged in
