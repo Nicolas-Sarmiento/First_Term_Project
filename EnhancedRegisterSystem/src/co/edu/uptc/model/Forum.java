@@ -11,6 +11,7 @@ public class Forum {
     public Forum(String titulo, String descripcionDelForo) {
         this.titulo = titulo;
         DescripcionDelForo = descripcionDelForo;
+        this.answerForum = new ArrayList<>();
     }
    
     public String getTitulo() {
