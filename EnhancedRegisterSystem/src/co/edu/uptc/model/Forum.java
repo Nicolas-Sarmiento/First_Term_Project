@@ -1,13 +1,12 @@
 package co.edu.uptc.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Forum {
 
     private String titulo;
     private String DescripcionDelForo;
-    private ArrayList<String> answerForum;
+    private ArrayList<Answer> answerForum;
     public Forum(String titulo, String descripcionDelForo) {
         this.titulo = titulo;
         DescripcionDelForo = descripcionDelForo;
@@ -27,16 +26,19 @@ public class Forum {
         DescripcionDelForo = descripcionDelForo;
     }
 
-    public ArrayList<String> getAnswerForum() {
+    public ArrayList<Answer> getAnswerForum() {
         return answerForum;
     }
     //esta son las respuestas del foro
-    public void setAnswerForum(ArrayList<String> answerForum) {
+    public void setAnswerForum(ArrayList<Answer> answerForum) {
+
         this.answerForum = answerForum;
     }
 
-    public void addAnswer(String answer){
-        this.answerForum.add(answer);
+    public void addAnswer(String answer, Person person){
+
+        Answer answerForum = new Answer(answer , person);
+        this.answerForum.add(answerForum);
     }
 
     @Override
@@ -46,4 +48,8 @@ public class Forum {
                 ", DescripcionDelForo='" + DescripcionDelForo + '\'' +
                 '}';
     }
+
+
+
+
 }

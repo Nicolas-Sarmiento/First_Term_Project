@@ -245,7 +245,7 @@ public class LoginView {
             switch (option){
                 case 1:
                     answer = this.util.inputString("Enter your Answer: \n", "No empty answers");
-                    this.forumController.addComment(answer);
+                    this.forumController.addComment(answer,loginController.getLoggedPerson());
                 break;
                 case 2:
                     System.out.println("Building delete");

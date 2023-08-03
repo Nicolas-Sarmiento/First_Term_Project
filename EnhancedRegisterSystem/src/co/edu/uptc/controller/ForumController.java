@@ -1,6 +1,8 @@
 package co.edu.uptc.controller;
 
+import co.edu.uptc.model.Answer;
 import co.edu.uptc.model.Forum;
+import co.edu.uptc.model.Person;
 
 import java.util.ArrayList;
 /**
@@ -52,8 +54,8 @@ public class ForumController {
     public String seeForum(){
         String aux="";
         aux=loggedForum.toString()+"\n";
-        ArrayList<String> w=loggedForum.getAnswerForum();
-        for (String f:w) {
+        ArrayList<Answer> w = loggedForum.getAnswerForum();
+        for (Answer f:w) {
             aux+=f;
         }
         return aux;
@@ -91,8 +93,8 @@ public class ForumController {
      * @param comment comment to add
      * @return if it was possible to add a comment
      */
-    public boolean addComment(String comment){
-        loggedForum.addAnswer(comment);
+    public boolean addComment(String comment, Person person){
+        loggedForum.addAnswer(comment, person);
         return true;
     }
 
@@ -101,15 +103,18 @@ public class ForumController {
      * @param comment comment to delete
      * @return if it was possible to delete a comment
      */
-    public boolean deleteComment(String comment){
-        ArrayList<String> aux=loggedForum.getAnswerForum();
+    public boolean deleteComment(String comment, Person person){
+        ArrayList<Answer> aux = loggedForum.getAnswerForum();
+        Answer auxAnswer = new Answer(comment, person);
         for (int i=0;i<aux.size();i++) {
-            if (aux.get(i).equals(comment)){
-                aux.remove(comment);
+            if (aux.get(i).equals(auxAnswer)){
+                aux.remove(auxAnswer);
                 loggedForum.setAnswerForum(aux);
                 return true;
             }
         }
         return false;
     }
+
+
 }
