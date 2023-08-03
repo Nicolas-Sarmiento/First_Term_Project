@@ -1,22 +1,36 @@
 package co.edu.uptc.model;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * The Answer class is responsible for
+ * saver anwers on their String atribute
+ * @author Samuel Gonzalez
+ * @version  1.0
+ *
+ */
+
 public class Answer {
-    private String anwers;
+    private String answer;
     private Person person;
-    public Answer(String anwers, Person personCometed) {
-        this.anwers = anwers;
+    /**
+     * Constructor of the class needs the Answer ande the person who will answer.
+     * @param answer,personCometed both entered by user
+     * @return If the credentials entered are valid,
+     * save the user and return true.
+     *
+     */
+    public Answer(String answer, Person personCometed) {
+        this.answer = answer;
         this.person = personCometed;
     }
 
     public String getAnwers() {
-        return anwers;
+        return answer;
     }
 
-    public void setAnwers(String anwers) {
-        this.anwers = anwers;
+    public void setAnwers(String answer) {
+        this.answer = answer;
     }
 
     public Person getPerson() {
@@ -29,7 +43,7 @@ public class Answer {
 
     @Override
     public String toString() {
-        return "-------------"  + anwers + '\'' +
+        return "-------------"  + answer + '\'' +
                 "of the Person= " + person;
     }
 
@@ -38,11 +52,11 @@ public class Answer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Answer respons = (Answer) o;
-        return this.anwers.equals(((Answer) o).getAnwers()) & this.person.getId() == respons.getPerson().getId();
+        return this.answer.equals(((Answer) o).getAnwers()) & this.person.getId() == respons.getPerson().getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(anwers, person);
+        return Objects.hash(answer, person);
     }
 }
