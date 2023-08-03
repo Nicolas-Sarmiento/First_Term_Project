@@ -41,11 +41,33 @@ public class Forum {
         this.answerForum.add(answerForum);
     }
 
+    public String getDivider(){
+        String divider = "";
+        int maxLen = 0;
+        for (Answer ans : this.answerForum){
+            try {
+                if (ans.getAnwers().length() > maxLen) maxLen = ans.getAnwers().length();
+            }catch (NullPointerException e){}
+        }
+        try {
+            if (this.DescripcionDelForo.length() > maxLen) maxLen = this.DescripcionDelForo.length();
+            if (this.titulo.length() > maxLen) maxLen = this.titulo.length();
+        }catch (NullPointerException e){}
+
+        divider = "+";
+        for (int i = 2 ; i < maxLen; i++){
+            divider +="-";
+        }
+        divider += "+";
+        return divider;
+    }
+
     @Override
     public String toString() {
-        String forum = "+--------------------------+\n" + this.titulo.toUpperCase() + "\n" + "Description: " + this.DescripcionDelForo+ "\n";
+        String div = this.getDivider();
+        String forum = div + "\n" + this.titulo.toUpperCase() + "\n" + "Description: \n" + this.DescripcionDelForo+ "\n";
         for (Answer ans : this.answerForum){
-            forum +="+--------------------------+\n"+ ans.toString() + "\n";
+            forum += div + "\n"+ ans.toString() + "\n";
         }
         return forum;
     }
