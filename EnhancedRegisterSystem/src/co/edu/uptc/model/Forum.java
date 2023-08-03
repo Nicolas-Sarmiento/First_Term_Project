@@ -43,10 +43,11 @@ public class Forum {
 
     @Override
     public String toString() {
-        return "Forum{" +
-                "titulo='" + titulo + '\'' +
-                ", DescripcionDelForo='" + DescripcionDelForo + '\'' +
-                '}';
+        String forum = "+--------------------------+\n" + this.titulo.toUpperCase() + "\n" + "Description: " + this.DescripcionDelForo+ "\n";
+        for (Answer ans : this.answerForum){
+            forum +="+--------------------------+\n"+ ans.toString() + "\n";
+        }
+        return forum;
     }
 
 

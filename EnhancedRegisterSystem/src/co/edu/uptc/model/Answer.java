@@ -20,7 +20,6 @@ public class Answer {
 
     @Override
     public String toString() {
-        return "Answer= "  + anwers + '\'' +
-                "of the Person= " + person;
+        return this.person.getName() + " " +this.person.getLastname() + "\n" + this.anwers;
     }
 }
