@@ -16,4 +16,13 @@ public class ForumController {
     public boolean deleteForum(){
         return false;
     }
+    public boolean seeTitles(){
+        return false;
+    }
+    public boolean addComment(){
+        return false;
+    }
+    public boolean deleteComment(){
+        return false;
+    }
 }
