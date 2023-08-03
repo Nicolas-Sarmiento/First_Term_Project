@@ -1,7 +1,11 @@
 package co.edu.uptc.controller;
 import co.edu.uptc.model.Account;
 import co.edu.uptc.controller.AccountController;
+import co.edu.uptc.model.Course;
 import co.edu.uptc.model.Person;
+import co.edu.uptc.model.persontypes.Administrator;
+import co.edu.uptc.model.persontypes.Professor;
+import co.edu.uptc.model.persontypes.Student;
 
 
 /**
@@ -20,15 +24,17 @@ public class LoginController {
     Person loggedPerson;
 
     AccountController acc;
+
     private final Person[] defaultPeople = {
-            new Person("202210568","manuel","Martinez"),
-            new Person("2021456", "Maria", "Rodriguez"),
-            new Person("2020154","Juan", "Velandia"),
-            new Person("2022159", "Maria", "Rodriguez"),
-            new Person("46389778", "Johana", "Torres"),
-            new Person("10953483", "Ivan", "Mendoza"),
-            new Person("47865421", "Laura","Castillo")
+            new Student("202210568","manuel","Martinez"),
+            new Student("2021456", "Maria", "Rodriguez"),
+            new Student("2020154","Juan", "Velandia"),
+            new Student("2022159", "Maria", "Rodriguez"),
+            new Professor("46389778", "Johana", "Torres"),
+            new Professor("10953483", "Ivan", "Mendoza"),
+            new Administrator("47865421", "Laura","Castillo")
     };
+
     private final Account[] defaultAccounts = {
             new Account("202210568", "manuel.martinez", "Masfx83", Roles.STUDENT.name(), "manuel.martinez@uptc.edu.co"),
             new Account("2021456","maria.rodriguez","AJsv92",Roles.STUDENT.name(), "maria.rodriguez@uptc.edu.co"),
@@ -129,9 +135,6 @@ public class LoginController {
                 personControler.assingAccount(person.getId(), acc.findAccount(acc.getUsername(), acc.getPassword()));
                 return true;
             }
-            
-          
-
        }
         return false;
     }
@@ -188,11 +191,15 @@ public class LoginController {
         return acc.showAccounts();
     }
 
+    public Person getLoggedPerson(){return this.loggedPerson;}
+
    private void assignDefaultAccounts(){
         for (int i = 0; i < this.defaultAccounts.length; i++){
             this.defaultPeople[i].setAccount(this.defaultAccounts[i]);
         }
    }
+
+
 
 
 }
