@@ -1,9 +1,6 @@
 package co.edu.uptc.model.persontypes;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import co.edu.uptc.model.Forum;
-import co.edu.uptc.model.Course;
 
 import co.edu.uptc.model.Person;
 
