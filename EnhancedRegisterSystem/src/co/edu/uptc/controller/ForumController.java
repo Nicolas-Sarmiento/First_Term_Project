@@ -61,15 +61,15 @@ public class ForumController {
 
     /**
      * this method deletes a forum
-     * @param title name of forum
+     * @param c index of forum console
      * @return if it was possible to delete the forum
      */
-    public boolean deleteForum(String title){
-        for (Forum c:forums) {
-            if(c.getTitulo().equals(title)){
-                forums.remove(c);
-                return true;
-            }
+    public boolean deleteForum(int c){
+        try{
+            forums.remove(forums.get(c));
+            return true;
+        }catch (IndexOutOfBoundsException e){
+
         }
         return false;
     }
