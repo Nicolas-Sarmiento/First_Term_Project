@@ -52,7 +52,6 @@ public class ForumController {
      * @return forum content
      */
     public String seeForum(){
-
         return this.loggedForum.toString();
     }
 
@@ -103,7 +102,9 @@ public class ForumController {
         Answer auxAnswer = new Answer(comment, person);
         for (int i=0;i<aux.size();i++) {
             if (aux.get(i).equals(auxAnswer)){
+
                 aux.remove(auxAnswer);
+
                 loggedForum.setAnswerForum(aux);
                 return true;
             }

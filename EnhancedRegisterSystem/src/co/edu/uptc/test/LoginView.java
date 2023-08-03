@@ -248,7 +248,9 @@ public class LoginView {
                     this.forumController.addComment(answer,loginController.getLoggedPerson());
                 break;
                 case 2:
-                    System.out.println("Building delete");
+                    forumController.deleteComment(this.util.inputString("Inpunt your comment to delete ", this.errorMessage), loginController.getLoggedPerson());
+
+
                 break;
                 case 3:
                     System.out.println("Closing Forum!");
