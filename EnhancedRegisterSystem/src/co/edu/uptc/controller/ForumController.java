@@ -52,13 +52,8 @@ public class ForumController {
      * @return forum content
      */
     public String seeForum(){
-        String aux="";
-        aux=loggedForum.toString()+"\n";
-        ArrayList<Answer> w = loggedForum.getAnswerForum();
-        for (Answer f:w) {
-            aux+=f;
-        }
-        return aux;
+
+        return this.loggedForum.toString();
     }
 
     /**
