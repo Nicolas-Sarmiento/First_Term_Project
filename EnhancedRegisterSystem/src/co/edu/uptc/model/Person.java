@@ -21,6 +21,10 @@ public class Person {
         this.lastname = lastname;
     }
 
+
+    public Person() {
+    }
+
     public Account getAccount() {
         return account;
     }
