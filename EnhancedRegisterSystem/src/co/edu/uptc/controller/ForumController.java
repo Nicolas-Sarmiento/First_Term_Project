@@ -57,7 +57,7 @@ public class ForumController {
 
     /**
      * this method deletes a forum
-     * @param c index of forum console
+     * @param c index of forum
      * @return if it was possible to delete the forum
      */
     public boolean deleteForum(int c){
@@ -94,7 +94,7 @@ public class ForumController {
 
     /**
      * This method deletes an existing forum comment.
-     * @param comment comment to delete
+     * @param comment,person person with comment to delete
      * @return if it was possible to delete a comment
      */
     public boolean deleteComment(String comment, Person person){

@@ -92,7 +92,7 @@ public class LoginView {
                 |\t1.Sing in accounts\t|
                 |\t2.see accounts\t\t|
                 |\t3.change password\t|
-                |\t4.Forums\t|
+                |\t4.Forums\t\t\t|
                 |\t5.logout\t\t\t|
                 ========================""";
         int decision,role;
@@ -120,7 +120,7 @@ public class LoginView {
                     System.out.println("Invalid option, try again.");
                 break;
             }
-        }while(decision!=4);
+        }while(decision!=5);
     }
 
     public boolean singInAccounts(){
@@ -179,6 +179,9 @@ public class LoginView {
 
         }while(decision!=3);
     }
+    /**
+     * This method shows the basic options for people who do not have special permissions for forums
+     */
 
     public  void optionsBasicNoForum(){
         String message = """
@@ -206,6 +209,9 @@ public class LoginView {
         }while(decision!=2);
     }
 
+    /**
+     * main menu for forum
+     */
     public void forumMenu(){
         int option = 0;
         do {
@@ -227,13 +233,16 @@ public class LoginView {
         }while (true);
     }
 
+    /**
+     * show Options basics for forum
+     */
     public void forumActions(){
         int option = 0;
         String forumOptions = """
                 ========================
-                |\t1.add Answer\t|
-                |\t2.Delete Answer\t|
-                |\t3.Exit\t\t\t|
+                |\t1.add Answer\t\t|
+                |\t2.Delete Answer\t\t|
+                |\t3.Exit\t\t\t\t|
                 ========================
                 """;
         String answer = "";
@@ -249,8 +258,7 @@ public class LoginView {
                 break;
                 case 2:
                     forumController.deleteComment(this.util.inputString("Inpunt your comment to delete ", this.errorMessage), loginController.getLoggedPerson());
-
-
+                    System.out.println("Building delete");
                 break;
                 case 3:
                     System.out.println("Closing Forum!");
@@ -261,11 +269,14 @@ public class LoginView {
         }while (true);
     }
 
+    /**
+     * Options special for professor or administrator regard of forum
+     */
     public void manageForums(){
         String forumOptions = """
                 ========================
-                |\t1.add Forum\t|
-                |\t2.Delete Forum\t|
+                |\t1.add Forum\t\t\t|
+                |\t2.Delete Forum\t\t|
                 |\t3.Continue\t\t\t|
                 ========================
                 """;
