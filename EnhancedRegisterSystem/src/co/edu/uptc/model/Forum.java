@@ -8,6 +8,10 @@ public class Forum {
     private String titulo;
     private String DescripcionDelForo;
     private ArrayList<String> answerForum;
+    public Forum(String titulo, String descripcionDelForo) {
+        this.titulo = titulo;
+        DescripcionDelForo = descripcionDelForo;
+    }
    
     public String getTitulo() {
         return titulo;
@@ -30,18 +34,9 @@ public class Forum {
         this.answerForum = answerForum;
     }
 
-    public Forum(String titulo, String descripcionDelForo) {
-        this.titulo = titulo;
-        DescripcionDelForo = descripcionDelForo;
+    public void addAnswer(String answer){
+        this.answerForum.add(answer);
     }
-
-
-    
-    
-    
-
-
-
 
 
 }
