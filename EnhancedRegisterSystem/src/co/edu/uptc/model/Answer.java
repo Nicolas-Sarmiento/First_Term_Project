@@ -43,8 +43,7 @@ public class Answer {
 
     @Override
     public String toString() {
-        return "-------------"  + answer + '\'' +
-                "of the Person= " + person;
+        return this.person.getName() + " " +this.person.getLastname() + "\n" + this.answer;
     }
 
     @Override
