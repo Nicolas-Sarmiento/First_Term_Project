@@ -56,7 +56,7 @@ public class ForumController {
         aux=loggedForum.toString()+"\n";
         ArrayList<Answer> w = loggedForum.getAnswerForum();
         for (Answer f:w) {
-            aux+=f;
+            aux += f + "\n";
         }
         return aux;
     }
@@ -108,7 +108,9 @@ public class ForumController {
         Answer auxAnswer = new Answer(comment, person);
         for (int i=0;i<aux.size();i++) {
             if (aux.get(i).equals(auxAnswer)){
+
                 aux.remove(auxAnswer);
+
                 loggedForum.setAnswerForum(aux);
                 return true;
             }
