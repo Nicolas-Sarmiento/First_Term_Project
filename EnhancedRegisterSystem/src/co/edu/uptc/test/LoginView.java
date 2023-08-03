@@ -5,6 +5,8 @@ import co.edu.uptc.controller.ForumController;
 import co.edu.uptc.controller.LoginController;
 import co.edu.uptc.utilities.InputLibrary;
 
+import java.util.ArrayList;
+
 /**
  * This class is to show the menu with its functions so
  * that it can be instantiated without having to make changes in the logic.
@@ -246,6 +248,7 @@ public class LoginView {
                 ========================
                 """;
         String answer = "";
+        ArrayList<String> ownAns = new ArrayList<>();
         do {
             System.out.println(this.forumController.seeForum());
             System.out.println(forumOptions);
@@ -257,8 +260,17 @@ public class LoginView {
                     this.forumController.addComment(answer,loginController.getLoggedPerson());
                 break;
                 case 2:
-                    forumController.deleteComment(this.util.inputString("Inpunt your comment to delete ", this.errorMessage), loginController.getLoggedPerson());
-                    System.out.println("Building delete");
+                    ownAns = forumController.getOwnAnswers(this.loginController.getLoggedPerson());
+                    if (ownAns.size() > 0){
+                        for (int i = 0; i < ownAns.size(); i++){
+                            System.out.println("+-------------------------+\n\t\t\t" + (i+1) + "\t\t\t\n"+ "+-------------------------+\n" + ownAns.get(i));
+                        }
+                        int comment = this.util.inputInt("Press 0 to cancel\nComment to delete: ", this.errorMessage, 0, ownAns.size());
+                        if (comment == 0) break;
+                        forumController.deleteComment(ownAns.get(comment-1), loginController.getLoggedPerson());
+                    }else {
+                        System.out.println("You don't have any answers. Create one :)");
+                    }
                 break;
                 case 3:
                     System.out.println("Closing Forum!");

@@ -112,5 +112,19 @@ public class ForumController {
         return false;
     }
 
+    public ArrayList<String> getOwnAnswers(Person p){
+        ArrayList<String> answers = new ArrayList<>();
+        ArrayList<Answer> aux = loggedForum.getAnswerForum();
+        for (Answer ans: aux){
+            try {
+                if (ans.getPerson().equals(p)){
+                    answers.add(ans.getAnwers());
+                }
+            }catch (NullPointerException e){}
+        }
+
+        return answers;
+    }
+
 
 }
