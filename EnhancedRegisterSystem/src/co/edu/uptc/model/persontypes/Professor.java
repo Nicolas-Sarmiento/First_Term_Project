@@ -6,6 +6,5 @@ public class Professor extends Person {
 
     public Professor(String id, String name, String lastname) {
         super(id, name, lastname);
-
     }
 }
