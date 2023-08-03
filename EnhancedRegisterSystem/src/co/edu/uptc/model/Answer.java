@@ -29,7 +29,7 @@ public class Answer {
 
     @Override
     public String toString() {
-        return "Answer= "  + anwers + '\'' +
+        return "-------------"  + anwers + '\'' +
                 "of the Person= " + person;
     }
 
