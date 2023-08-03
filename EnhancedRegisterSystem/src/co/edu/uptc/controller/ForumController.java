@@ -6,8 +6,18 @@ import java.util.ArrayList;
 
 public class ForumController {
     private ArrayList<Forum> forums;
+    private Forum loggedForum;
     public ForumController(){
         forums=new ArrayList<>();
+    }
+    public boolean selectForum(int i){
+        try{
+            this.loggedForum=forums.get(i);
+            return true;
+        }catch (IndexOutOfBoundsException e){
+
+        }
+        return false;
     }
     public boolean createdForum(String titleForum,String description){
         Forum f=new Forum(titleForum,description);
