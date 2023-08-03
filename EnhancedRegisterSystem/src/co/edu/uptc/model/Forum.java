@@ -38,5 +38,11 @@ public class Forum {
         this.answerForum.add(answer);
     }
 
-
+    @Override
+    public String toString() {
+        return "Forum{" +
+                "titulo='" + titulo + '\'' +
+                ", DescripcionDelForo='" + DescripcionDelForo + '\'' +
+                '}';
+    }
 }
