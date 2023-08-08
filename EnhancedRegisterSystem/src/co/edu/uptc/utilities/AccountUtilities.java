@@ -2,6 +2,7 @@ package co.edu.uptc.utilities;
 
 import co.edu.uptc.controller.Roles;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
@@ -139,7 +140,24 @@ public class AccountUtilities{
      */
     public String cleanNames(String name){
         String cleanName =  name.toLowerCase();
-        if (cleanName.startsWith(" ")) return cleanName.replaceFirst(" ", "");
+        ArrayList<String> names = new ArrayList<>();
+        String aux = "";
+        for (int i = 0; i < cleanName.length(); i++){
+            if (cleanName.charAt(i) != ' '){
+                aux += cleanName.charAt(i);
+                continue;
+            }
+
+            if (cleanName.charAt(i) == ' ' && !aux.equals("")){
+                names.add(aux);
+                aux = "";
+            }
+        }
+        cleanName = names.get(0);
+        for (int i = 1; i < names.size(); i++){
+            cleanName += " " + names.get(i);
+        }
+
         return cleanName;
     }
 
