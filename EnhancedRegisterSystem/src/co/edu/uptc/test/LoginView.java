@@ -130,8 +130,16 @@ public class LoginView {
         int roleIndex = 0;
 
         roleIndex = this.util.inputInt("\tType your role in the university\n\t1.Student\n\t2.Professor\n\t3.Secretary\n\t-> ", errorMessage, 1,3);
-        names = this.util.inputString("\tType their names: ", this.errorMessage);
-        lastNames = this.util.inputString("\tType your last name: ", errorMessage);
+        do {
+            names = this.util.inputStringUserName("\tType their names: ", this.errorMessage);
+            if (names.equals(this.errorMessage)) System.out.println("The name doesn't contain numbers and it must be not empty");
+        }while (names.equals(this.errorMessage));
+
+        do {
+            lastNames = this.util.inputStringUserName("\tType your last name: ", errorMessage);
+            if (lastNames.equals(this.errorMessage)) System.out.println("The last name doesn't contain numbers and it must be not empty");
+        }while (lastNames.equals(this.errorMessage));
+
         id = this.util.inputString("\tType your identification: ", errorMessage);
 
         return loginController.signin(names,lastNames,id,this.roles[roleIndex-1]);

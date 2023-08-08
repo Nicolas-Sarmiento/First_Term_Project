@@ -101,4 +101,25 @@ public class InputLibrary {
         return returnValue;
 
     }
+
+    public String inputStringUserName(String message, String errorMessage){
+        boolean isCorrect = false;
+        String returnValue = "";
+        String valueNoSpaces = "";
+        String noNums = "";
+        while (!isCorrect){
+            try {
+                System.out.print(message);
+                returnValue = inputLine.nextLine();
+                noNums = returnValue.replaceAll("[0-9]", "");
+                if ( noNums.length() < returnValue.length()) return errorMessage;
+                valueNoSpaces = returnValue.replaceAll(" ", "");
+                isCorrect = !valueNoSpaces.equals("");
+            }catch (Exception e){
+                System.out.println(errorMessage);
+            }
+        }
+        return returnValue;
+
+    }
 }

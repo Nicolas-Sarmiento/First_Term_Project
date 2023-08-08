@@ -71,8 +71,4 @@ public class Forum {
         }
         return forum;
     }
-
-
-
-
 }
