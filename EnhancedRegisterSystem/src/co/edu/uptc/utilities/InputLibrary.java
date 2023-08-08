@@ -113,6 +113,7 @@ public class InputLibrary {
                 returnValue = inputLine.nextLine();
                 noNums = returnValue.replaceAll("[0-9]", "");
                 if ( noNums.length() < returnValue.length()) return errorMessage;
+                if (!this.containsSpecialCharacters(returnValue)) return errorMessage;
                 valueNoSpaces = returnValue.replaceAll(" ", "");
                 isCorrect = !valueNoSpaces.equals("");
             }catch (Exception e){
@@ -121,5 +122,16 @@ public class InputLibrary {
         }
         return returnValue;
 
+    }
+
+    private boolean containsSpecialCharacters(String str){
+        for (int i = 0; i < str.length(); i++){
+            if (str.charAt(i) == 32) continue;
+            if (str.charAt(i) < 65) return false;
+            if (str.charAt(i) > 90 && str.charAt(i) < 97) return false;
+            if (str.charAt(i) > 122) return false;
+        }
+
+        return true;
     }
 }

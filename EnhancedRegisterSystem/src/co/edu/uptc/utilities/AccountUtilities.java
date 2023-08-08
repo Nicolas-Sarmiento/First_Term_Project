@@ -143,16 +143,19 @@ public class AccountUtilities{
         ArrayList<String> names = new ArrayList<>();
         String aux = "";
         for (int i = 0; i < cleanName.length(); i++){
-            if (cleanName.charAt(i) != ' '){
-                aux += cleanName.charAt(i);
-                continue;
-            }
-
             if (cleanName.charAt(i) == ' ' && !aux.equals("")){
                 names.add(aux);
                 aux = "";
+                continue;
             }
+
+            if (cleanName.charAt(i) != ' '){
+                aux += cleanName.charAt(i);
+            }
+
+
         }
+        if (names.size() == 0) return aux;
         cleanName = names.get(0);
         for (int i = 1; i < names.size(); i++){
             cleanName += " " + names.get(i);
